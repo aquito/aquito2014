@@ -1,17 +1,15 @@
 
-class Day(
+class Day {
   // GLOBAL VARIABLES
-  int n = 1;
+  String Date = "1";
 
   // CONSTRUCTOR
-  Day(n){
-    
-    
-    
+  Day(){
+    text(Date, 10, 10);
   }
 
 // FUNCTIONS
-void scenario(){ // scenario collects together all the functions to be ran in it
+// void scenario(){ // scenario collects together all the functions to be ran in it
   
 }
 

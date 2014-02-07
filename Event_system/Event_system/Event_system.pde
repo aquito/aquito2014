@@ -1,6 +1,6 @@
 
 // DECLARE
-Day currentDay; // Day [] dayArray = new Day [30];
+Day currentDay;
 
 
 void setup () {
@@ -15,7 +15,7 @@ void draw() {
   background(255);
   
   // CALL FUNCTIONALITY
-  currentDay.scenario();
+ // currentDay.scenario();
   
 }
 

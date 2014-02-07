@@ -53,6 +53,37 @@
 	<array>
 		<dict>
 			<key>Bounds</key>
+			<string>{{12.227270059349145, 323.22717271264924}, {90, 36}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>ID</key>
+			<integer>11861</integer>
+			<key>Magnets</key>
+			<array>
+				<string>{0, 1}</string>
+				<string>{0, -1}</string>
+				<string>{1, 0}</string>
+				<string>{-1, 0}</string>
+			</array>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict/>
+			<key>Text</key>
+			<dict>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1265
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
+
+\f0\fs20 \cf0 Gems = Gems - 1}</string>
+				<key>VerticalPad</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>Bounds</key>
 			<string>{{909.818191678071, 581.7728533734961}, {197.81819152832031, 182}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
@@ -2103,7 +2134,7 @@ subtract}</string>
 			<key>Points</key>
 			<array>
 				<string>{56.727271432720343, 314.2271728515625}</string>
-				<string>{57.212688907195464, 330.86385267284044}</string>
+				<string>{57.227273544989487, 383.85052626881725}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -2157,7 +2188,7 @@ subtract}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{12.227271473112335, 331.3636399546931}, {90, 36}}</string>
+			<string>{{12.227273544989483, 383.85052626881725}, {90, 36}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -3389,7 +3420,7 @@ subtract}</string>
 			<integer>52</integer>
 			<key>Points</key>
 			<array>
-				<string>{102.22727147311234, 349.3636399546931}</string>
+				<string>{102.22727354498949, 401.85052626881725}</string>
 				<string>{170.09091274403346, 313.36363975962337}</string>
 				<string>{172.54545822517935, 170.181820026114}</string>
 				<string>{234.49991654068961, 131.63637179579604}</string>
@@ -3462,7 +3493,7 @@ subtract}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2014-02-07 13:11:24 +0000</string>
+	<string>2014-02-07 13:57:03 +0000</string>
 	<key>Modifier</key>
 	<string>Aki Järvinen</string>
 	<key>NotesVisible</key>

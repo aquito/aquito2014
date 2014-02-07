@@ -1,4 +1,4 @@
-import controlP5.*;
+// import controlP5.*;
 
 int [] formation = {4,0,3,0,3}; // defines formation according to D-DMF-MF-SS-S, 4-2-3-1
 int [] menuFormation;

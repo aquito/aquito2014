@@ -1,13 +1,17 @@
 class Scenario {
-  // GLOBAL VARIABLES
-  int Scenario_Id;
-  int ScenarioDay;
-  int ScenarioScope;
-  int ScenarioItems;
+  // GLOBAL VARIABLES 
+
+  String [] [] Scenario = {{"Prologue", "Marry partner?", "1", "1", "2", "Yes", "No", "", ""}, 
+                           {"Epilogue", "Arrange funeral?", "2", "1", "2", "Yes", "No", "Yes, but…", "No, but…"}};
+  String ScenarioName = Scenario[day][0];
+  String ScenarioDescription = Scenario[day][1];
+  int ScenarioDay = int(Scenario[day][2]);
+  int ScenarioScope = int(Scenario[day][3]);
+  int ScenarioItemCount = int(Scenario[day][4]);
+  String [] ScenarioItems = {Scenario[day][5], Scenario[day][6], Scenario[day][7], Scenario[day][8]};
   boolean ScenarioActive;
-  String [] ScenarioName = {"Prologue", "Epilogue"};
-  String [] ScenarioDescription = {"Marry her", "Hold funeral?"};
-  String [] ScenarioItemDescriptions = {"Yes", "No"};
+  
+  
     // int [] ScenarioAttributes = {ScenarioId, ScenarioDay, ScenarioScope, ScenarioItems, ScenarioRewards}; 
 
   // CONSTRUCTOR
@@ -19,12 +23,13 @@ class Scenario {
   void display() {
     fill(0,0,0);
     textSize(16);
-    text(str(day), width/2, 50);
+    text("Day " + str(day), 100, 50);
     textSize(32);
-    text(ScenarioName[day], width/2, 100); // Name
-    text(ScenarioDescription[day], width/2, 150); // Scenario described
-    for (int r = 0; r > 2; r++) { // REPLACE 2 WITH SCENARIOITEMS!
-     text(ScenarioItemDescriptions[r], width/2 + r*30, 150 + r*50);
+    text(ScenarioName, 100, 100); // Name
+    textSize(48);
+    text(ScenarioDescription, 100, 200); // Scenario described
+    for (int r = 0; r < ScenarioItemCount; r++) { // REPLACE 2 WITH SCENARIOITEMS!
+     text(ScenarioItems[r], 100, 300 + r*75);
     } 
   }
 }

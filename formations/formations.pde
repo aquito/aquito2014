@@ -1,6 +1,6 @@
   // import controlP5.*;
 
-int [] formation = {4,0,3,0,3}; // defines formation according to D-DMF-MF-SS-S, 4-2-3-1
+int [] formation; // defines formation according to D-DMF-MF-SS-S, 4-2-3-1
 int [] menuFormation;
 int x;
 int y;
@@ -25,7 +25,7 @@ void draw (){
   strokeWeight (4);
   smooth();
   strokeJoin(ROUND);
-  formationSetup(4,0,3,0,3);  // formationSetup(menuFormation[])
+  formationSetup(5,0,3,0,2);  // formationSetup(menuFormation[])
 }
 
 

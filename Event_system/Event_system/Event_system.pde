@@ -1,6 +1,7 @@
 
 // DECLARE
-Day currentDay;
+Scenario currentScenario;
+ int day = 0;
 
 
 void setup () {
@@ -8,14 +9,13 @@ void setup () {
   smooth();
   
   // INITIALIZE
-  currentDay = new Day();
+  currentScenario = new Scenario(day);
 }
 
 void draw() {
   background(255);
-  
   // CALL FUNCTIONALITY
- // currentDay.scenario();
+  currentScenario.display();
   
 }
 

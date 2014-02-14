@@ -10,7 +10,7 @@ int r = 0;
   int ScenarioScope = scenariodata.getInt(day, 3);
   int ScenarioItemCount = scenariodata.getInt(day, 4);
   String [] ScenarioItems = {scenariodata.getString(day, 5), scenariodata.getString(day, 6), scenariodata.getString(day, 7), scenariodata.getString(day, 8)}; // make a string of choices out of array contents
- // boolean ScenarioActive;
+  boolean ScenarioActive;
 
   // CONSTRUCTOR
   Scenario(int tempDay) {
@@ -19,6 +19,15 @@ int r = 0;
   
   
 // FUNCTIONS
+
+/* void checkActiveScenarios()
+
+if (ScenarioActive = true) {
+ 
+}
+
+
+*/
   void establish() {
     fill(237, 230, 233); // silverish text color
     textSize(32);
@@ -27,6 +36,7 @@ int r = 0;
     text(ScenarioName, 200, 200); // Name
     textSize(48);
     text(ScenarioDescription, 200, 325); // Scenario described
+    
   }
   
  void presentOptions() {   
@@ -42,7 +52,8 @@ int r = 0;
     } 
   }
  
- // MORE
+ // void scenarioTimer() - initiate timer (10 secs with a progress bar...eventually with not all scenarios? -> add ScenarioTimer boolean to data)
+ // void choiceRecorder() - record choice, initiate consequences, flag scenario as inactive (rewards, history, ...)
  
 }
 

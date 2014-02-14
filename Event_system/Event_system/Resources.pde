@@ -19,11 +19,14 @@ class Resources {
   
   void display(){
     
-    fill(0,0,0); // black text color
-    textSize(16);
-    text("Gold " + str(Gold), 700, 50);
-    text("Essence " + str(Essence), 700, 75);
-    text("Gems " + str(Gems), 700, 100);
+    
+    textSize(24);
+    fill(250, 232, 91); // gold text color
+    text("Gold " + str(Gold), 650, 50);
+    fill(145, 222, 216); // turquoise text color
+    text("Essence " + str(Essence), 650, 75);
+    fill(237, 230, 233); // silverish text color
+    text("Gems " + str(Gems), 650, 100);
    
 }
 

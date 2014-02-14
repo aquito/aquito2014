@@ -4,6 +4,7 @@ import controlP5.*;
 Scenario currentScenario;
 Resources currentResources;
 ControlP5 cp5;
+PFont font;
 
  int day = 0;
  int Gold = 1000;
@@ -19,15 +20,19 @@ void setup () {
   currentScenario = new Scenario(day);
   currentResources = new Resources(Gold, Essence, Gems);
   cp5 = new ControlP5(this);
-  
+  font = loadFont("IowanOldStyle-Italic-64.vlw");
+
 }
 
 void draw() {
-  background(255);
+  background(129, 5, 63);
   // CALL FUNCTIONALITY
-  currentScenario.display();
+  currentScenario.establish();
   currentResources.display();
   
+  if (mouseButton == LEFT) {
+  currentScenario.presentOptions();
+  } 
 }
 
 

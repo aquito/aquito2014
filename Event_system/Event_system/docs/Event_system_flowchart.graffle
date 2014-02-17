@@ -1065,7 +1065,7 @@ Print Arc\
 			<array>
 				<dict>
 					<key>Bounds</key>
-					<string>{{821.4545487993023, 261.22717295008266}, {173.27273559570312, 14}}</string>
+					<string>{{796.35128547353645, 273.72715903007264}, {173.27276611328125, 14}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FitText</key>
@@ -1101,7 +1101,7 @@ Print Arc\
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{821.4545487993023, 275.22717295008266}, {173.27273559570312, 28}}</string>
+					<string>{{796.35128547353645, 287.72715903007264}, {173.27276611328125, 28}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FitText</key>
@@ -1140,7 +1140,7 @@ Attribute}</string>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{821.4545487993023, 303.22717295008266}, {173.27273559570312, 42}}</string>
+					<string>{{796.35128547353645, 315.72715903007264}, {173.27276611328125, 42}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FitText</key>
@@ -3365,7 +3365,7 @@ subtract}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2014-02-11 09:16:32 +0000</string>
+	<string>2014-02-17 13:02:23 +0000</string>
 	<key>Modifier</key>
 	<string>Aki Järvinen</string>
 	<key>NotesVisible</key>
@@ -3458,7 +3458,7 @@ subtract}</string>
 		<key>FitInWindow</key>
 		<true/>
 		<key>Frame</key>
-		<string>{{0, 65}, {1252, 813}}</string>
+		<string>{{253, 139}, {1578, 987}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>
@@ -3472,9 +3472,9 @@ subtract}</string>
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{-90, 0}, {1297.6424692677936, 783.0000217426076}}</string>
+		<string>{{-107, 0}, {1332.3927343813634, 783.00002685751645}}</string>
 		<key>Zoom</key>
-		<real>0.86079180240631104</real>
+		<real>1.0830140113830566</real>
 		<key>ZoomValues</key>
 		<array>
 			<array>

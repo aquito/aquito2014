@@ -1,5 +1,8 @@
+//
+
 class Scenariostatus {
   // GLOBAL VARIABLES
+  boolean ScenarioActive;
   
 
   

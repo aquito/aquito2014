@@ -17,7 +17,7 @@ int r = 0;
   day = tempDay;
   
 }
-  
+    
   
 // FUNCTIONS
 
@@ -50,8 +50,8 @@ if (ScenarioActive = true) {
      // buttons
       cp5.addButton(ScenarioItems[r])
      .setValue(0) //??
-     .setPosition(200, 400 + r * 60)
-     .setSize(300, 24)
+     .setPosition(200, 300 + r * 40)
+     .setSize(300, 32)
      ;
      r = r + 1;
    }

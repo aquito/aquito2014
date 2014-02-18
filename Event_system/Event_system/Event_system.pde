@@ -24,7 +24,7 @@ void setup () {
   currentScenario = new Scenario(day);
   currentResources = new Resources(Gold, Essence, Gems);
   cp5 = new ControlP5(this);
-  font = loadFont("IowanOldStyle-Italic-64.vlw");
+  font = loadFont("IowanOldStyle-Italic-32.vlw");
   cp5.setControlFont(font);
   scenariostatusNow = new Scenariostatus();
   dayFastForward = new DayPlus();

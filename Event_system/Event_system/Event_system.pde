@@ -10,10 +10,9 @@ DayPlus dayFastForward;
 
  int day = 0;
  int Gold = 1000;
-  int Essence = 500;
-  int Gems = 10;
- 
-  String [] Choices; // for recording of choices
+ int Essence = 500;
+ int Gems = 10;
+ String [] Choices; // for recording of choices
 
 
 void setup () {
@@ -54,22 +53,24 @@ void draw() {
  
 }
  
- /*
+
     void controlEvent(ControlEvent theEvent) {
   
   if(theEvent.isController()) { 
     
     print("control event from : "+theEvent.controller().name());
-    printArray(" " + Choices);
+    printArray(Choices);
     
     if(theEvent.controller().name()=="ScenarioItems[r]") {
-    append(Choices, "ScenarioItems[r]");
-    day = day + 1;
+    String choiceTaken = "ScenarioItems[r]";
+    Choices = append(Choices, choiceTaken);
+    
+    dayFastForward.advanceOneDay();  // should eventually take to resolution rather than the next day...
     }
   }
  }
  
- */
+
   
 
 

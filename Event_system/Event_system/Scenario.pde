@@ -1,21 +1,15 @@
 class Scenario {
   // GLOBAL VARIABLES 
 
-Table scenariodata = loadTable("ScenarioData.csv", "header");
-int r = 0;
- 
   String ScenarioName = scenariodata.getString(day, 0);
   String ScenarioDescription = scenariodata.getString(day, 1);
   int ScenarioDay = scenariodata.getInt(day, 2);
   int ScenarioScope = scenariodata.getInt(day, 3);
-  int ScenarioItemCount = scenariodata.getInt(day, 4);
-  String [] ScenarioItems = {scenariodata.getString(day, 5), scenariodata.getString(day, 6), scenariodata.getString(day, 7), scenariodata.getString(day, 8)}; // make a string of choices out of array contents
   int rowcount = scenariodata.getRowCount(); // last row 
   
   // CONSTRUCTOR
   Scenario(int tempDay) {
   day = tempDay;
-  
 }
     
   
@@ -40,23 +34,22 @@ if (ScenarioActive = true) {
     
   }
   
+ /*
  void presentOptions() {   
    if  (day > rowcount) {
      scenariodata.clearRows();
      dayFastForward.resetToZero();
    }
-   else if (r < ScenarioItemCount) { // choices output
+   else if (r < ScenarioItemCount) { // choices output: this should be just about making the buttons visible and changing the texts per button
   
-     // buttons
-      cp5.addButton(ScenarioItems[r])
-     .setValue(0) //??
-     .setPosition(200, 300 + r * 40)
-     .setSize(300, 32)
-     ;
+     // show buttons
+      cp5.show();
+     // cp5.addButton(ScenarioItems[r])
+   
      r = r + 1;
    }
 }
-  
+  */
   
   
   // void choiceRecorder() - record choice, clear screen, initiate consequences, flag scenario as inactive (rewards, history, ...)

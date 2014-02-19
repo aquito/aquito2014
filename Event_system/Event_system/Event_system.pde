@@ -7,14 +7,20 @@ ControlP5 cp5;
 PFont font;
 Scenariostatus scenariostatusNow;
 DayPlus dayFastForward;
+ChoiceButton newButton;
 
  int day = 0;
  int Gold = 1000;
  int Essence = 500;
  int Gems = 10;
  String [] Choices; // for recording of choices
+ int buttonX = 200;
+ int buttonY = 300;
+ int r = 0; // scenario item loop counter
+ String [] buttons;
+ Table scenariodata = loadTable("ScenarioData.csv", "header");
 
-
+ 
 void setup () {
   size(800,600);
   smooth();
@@ -27,6 +33,11 @@ void setup () {
   cp5.setControlFont(font);
   scenariostatusNow = new Scenariostatus();
   dayFastForward = new DayPlus();
+  newButton = new ChoiceButton(buttonX, buttonY, buttons);
+  
+  // hide buttons for now
+  cp5.hide();
+    
 }
 
 void draw() {
@@ -37,7 +48,8 @@ void draw() {
   currentResources.display();
   
   if (mouseButton == LEFT) {
-  currentScenario.presentOptions();
+   newButton.place();
+    cp5.show();
   } 
  
 }

@@ -15,14 +15,20 @@ DayPlus() {
    
     void advanceOneDay() {
       day = day + 1;
-      background(129, 5, 63);
       currentScenario = new Scenario(day);
-      
+      String [] ScenarioItems = {"","","",""};
+      redraw();
+      currentScenario.presentOptions();
     }
     
     void resetToZero() {
       day = 0;
-      background(129, 5, 63);
       currentScenario = new Scenario(day);
+      redraw();
+    }
+    
+    void theEnd() {
+      exit(); 
+      redraw();
     }
 }

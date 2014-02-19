@@ -13,7 +13,10 @@ DayPlus dayFastForward;
  int Essence = 500;
  int Gems = 10;
  String [] Choices; // for recording of choices
-
+ String [] buttons = {"a", "b", "c", "d"};
+ int buttonX = 200;
+ int buttonY = 300;
+ int options = 0;
 
 void setup () {
   size(800,600);
@@ -27,6 +30,8 @@ void setup () {
   cp5.setControlFont(font);
   scenariostatusNow = new Scenariostatus();
   dayFastForward = new DayPlus();
+  currentScenario.presentOptions();
+  
 }
 
 void draw() {
@@ -35,14 +40,10 @@ void draw() {
   // scenariostatusNow.update();
   currentScenario.establish();
   currentResources.display();
-  
-  if (mouseButton == LEFT) {
-  currentScenario.presentOptions();
-  } 
+  currentScenario.displayButtons();
  
 }
- 
-  
+
    void keyPressed() {
     if (key == 'b' || key == 'B') {
       dayFastForward.advanceOneDay();
@@ -52,7 +53,9 @@ void draw() {
     }
  
 }
+
  
+ /*
 
     void controlEvent(ControlEvent theEvent) {
   
@@ -70,7 +73,7 @@ void draw() {
   }
  }
  
-
+*/
   
 
 

@@ -7,8 +7,6 @@ ControlP5 cp5;
 PFont font;
 DayPlus dayFastForward;
 
-// int r = 0;
-
  int day = 0;
  int Gold = 1000;
  int Essence = 500;
@@ -33,9 +31,7 @@ void setup () {
   font = loadFont("IowanOldStyle-Italic-32.vlw");
   cp5.setControlFont(font);
   dayFastForward = new DayPlus();
-  
   // check active scenario
-  
 }
 
 void draw() {
@@ -44,9 +40,13 @@ void draw() {
 
   currentScenario.establish();
   currentScenario.presentOptions();
-  currentScenario.displayButtons();
   currentResources.display();
- 
+
+if (keyPressed) {
+    if (key == 'O' || key == 'o') {
+  currentScenario.displayButtons();
+  }
+ }
 }
 
   public void controlEvent(ControlEvent theEvent) {
@@ -62,14 +62,6 @@ void draw() {
     }
  
 }
-
- 
- /*
-
-   
- 
-*/
-  
 
 
   

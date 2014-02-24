@@ -8,7 +8,7 @@ Table scenariodata = loadTable("ScenarioData.csv", "header");
   int ScenarioScope = scenariodata.getInt(day, 3);
   int ScenarioItemCount = scenariodata.getInt(day, 4);
   String [] ScenarioItems = {scenariodata.getString(day, 4), scenariodata.getString(day, 5), scenariodata.getString(day, 6), scenariodata.getString(day, 7)}; // make a string of choices out of array contents
-  int days = scenariodata.getRowCount(); // last row 
+  int daysTotal = scenariodata.getRowCount(); // last row 
   String [] Choices; // for recording of choices
   
   // CONSTRUCTOR
@@ -33,13 +33,12 @@ Table scenariodata = loadTable("ScenarioData.csv", "header");
   
  void presentOptions() {   
 
-     if  (day <= days) {
+     if  (day < daysTotal) {
        for (int items = 0; items < 4; items++) {
      buttons[items] = ScenarioItems[items];
      // choices output; update buttons text 
    }} else { 
-    // scenariodata.clearRows();
-    day = days;
+    day = daysTotal;
      String ScenarioName = "END";
       dayFastForward.theEnd();
       }
@@ -57,7 +56,9 @@ Table scenariodata = loadTable("ScenarioData.csv", "header");
 }  
   
   void cleanupButtons() {
-    
+    for (int itembuttons = 0; itembuttons < 4; itembuttons++) {
+           cp5.remove(buttons[itembuttons]);
+    }
   }
     
    void controlEvent(ControlEvent theEvent) {

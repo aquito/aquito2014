@@ -1,0 +1,13 @@
+ScenarioID,1,2,3,4,5,6
+ScenarioNames,Prologue,Epilogue,,,,
+ScenarioDescriptions,Marry partner?,Arrange funeral?,,,,
+ScenarioDays,1,2,,,,
+ScenarioScopes,1,1,,,,
+ScenarioItem1agg,Yes,Yes,,,,
+ScenarioItem2dip,No,Maybe,,,,
+ScenarioItem3neut,,"No, but",,,,
+ScenarioItem4unpred,,,,,,
+Champion1s,Ragnar,Ragnar,,,,
+Champion2s,Lagertha,Lagertha,,,,
+Champion3s,,Widow,,,,
+Champion4s,,,,,,

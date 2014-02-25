@@ -14,12 +14,12 @@ DayPlus() {
    
     void advanceOneDay() {
       currentScenario.cleanupButtons();
-      currentScenario = new Scenario(ScenarioName, ScenarioDescription, ScenarioItems);
       day = day + 1;
+      currentScenario = new Scenario(ScenarioName, ScenarioDescription, ScenarioItems);
     }
     
     void resetToZero() {
-      day = 0;
+      day = 1;
       currentScenario = new Scenario(ScenarioName, ScenarioDescription, ScenarioItems);
       redraw();
     }

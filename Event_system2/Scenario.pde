@@ -4,12 +4,10 @@ class Scenario {
 Table scenariodata = loadTable("ScenarioData2.csv");
   String ScenarioName = scenariodata.getString(1, day);
   String ScenarioDescription = scenariodata.getString(2, day);
- /* rework int ScenarioDay = scenariodata.getInt(3, day);
-  int ScenarioScope = scenariodata.getInt(4, day); */  
-String [] ScenarioItems = {scenariodata.getString(5, day), scenariodata.getString(6, day), scenariodata.getString(7, day), scenariodata.getString(8, day)}; // make a string of choices out of array contents
+  boolean isExtendedScenario = boolean(scenariodata.getInt(3, day));  
+String [] ScenarioItems = {scenariodata.getString(4, day), scenariodata.getString(5, day), scenariodata.getString(6, day), scenariodata.getString(7, day)}; // make a string of choices out of array contents
   int daysTotal = scenariodata.getColumnCount(); // last column 
   String [] Choices; // for recording of choices
-  
 
   
   // CONSTRUCTOR
@@ -17,6 +15,16 @@ String [] ScenarioItems = {scenariodata.getString(5, day), scenariodata.getStrin
   ScenarioName = this.ScenarioName;
   ScenarioDescription = this.ScenarioDescription;
   ScenarioItems = this.ScenarioItems;
+ 
+  // button initialization
+  
+  if  (day < daysTotal) {
+       for (int items = 0; items < 4; items++) {
+     buttons[items] = ScenarioItems[items]; // choices output; update buttons text to current scenario
+   }} else { 
+    day = daysTotal;
+      currentDay.theEnd();
+      }
 }
       
 // FUNCTIONS
@@ -29,21 +37,8 @@ String [] ScenarioItems = {scenariodata.getString(5, day), scenariodata.getStrin
     text(ScenarioName, 200, 200); // Name
     textSize(32);
     text(ScenarioDescription, 200, 275); // Scenario described
-    
   }
   
- void presentOptions() {   
-   
-     if  (day < daysTotal) {
-       for (int items = 0; items < 4; items++) {
-     buttons[items] = ScenarioItems[items];
-     // choices output; update buttons text 
-   }} else { 
-    day = daysTotal;
-      dayFastForward.theEnd();
-      }
- }
- 
  
  void displayButtons() {
  for (int itembuttons = 0; itembuttons < 4; itembuttons++) { //add buttons for four options unless options are blank
@@ -74,7 +69,7 @@ String [] ScenarioItems = {scenariodata.getString(5, day), scenariodata.getStrin
     
     // execute consequence function
     
-    dayFastForward.advanceOneDay();  // should eventually take to resolution rather than the next day...
+    currentDay.advanceOneDay();  // should eventually take to resolution rather than the next day...
     redraw();
   }
  }

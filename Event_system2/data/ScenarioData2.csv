@@ -1,8 +1,7 @@
 ScenarioID,1,2,3,4,5,6
 ScenarioNames,Prologue,Epilogue,,,,
 ScenarioDescriptions,Marry partner?,Arrange funeral?,,,,
-ScenarioDays,1,2,,,,
-ScenarioScopes,1,1,,,,
+isExtendedScenario,FALSE,TRUE,,,,
 ScenarioItem1agg,Yes,Yes,,,,
 ScenarioItem2dip,No,Maybe,,,,
 ScenarioItem3neut,,"No, but",,,,

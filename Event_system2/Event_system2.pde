@@ -6,7 +6,7 @@ Resources currentResources;
 ControlP5 cp5;
 PFont fontHeader;
 PFont fontBasic;
-DayPlus dayFastForward;
+Day currentDay;
 
  int day = 1;
  int Gold = 1000;
@@ -19,6 +19,8 @@ DayPlus dayFastForward;
  String ScenarioName;
  String ScenarioDescription;
  String [] ScenarioItems;
+int [] scenarioIDsPerDay;
+boolean isExtendedScenario;
  
 
 void setup () {
@@ -26,14 +28,16 @@ void setup () {
   smooth();
   
   // INITIALIZE
+  
+  currentDay = new Day(day, scenarioIDsPerDay, isExtendedScenario);
   currentScenario = new Scenario(ScenarioName, ScenarioDescription, ScenarioItems);
   currentResources = new Resources(Gold, Essence, Gems);
   cp5 = new ControlP5(this);
   fontHeader = loadFont("IowanOldStyle-Italic-64.vlw");
   fontBasic = loadFont("IowanOldStyle-Italic-32.vlw");
   cp5.setControlFont(fontBasic);
-  dayFastForward = new DayPlus();
-  // check active scenario
+  
+  // add checking active scenario
 }
 
 void draw() {
@@ -41,22 +45,21 @@ void draw() {
   // CALL FUNCTIONALITY
 
   currentScenario.establish();
-  currentScenario.presentOptions();
   currentResources.display();
 
 if (keyPressed) {
     if (key == 'O' || key == 'o') {
-  currentScenario.displayButtons();
+  currentScenario.displayButtons(); // present options
   }
  }
 }
  
    void keyPressed() {
     if (key == 'b' || key == 'B') {
-      dayFastForward.advanceOneDay();
+      currentDay.advanceOneDay();
     }
     else if (key == 'r' || key == 'R') {
-      dayFastForward.resetToZero();
+      currentDay.resetToZero();
     }
  
 }

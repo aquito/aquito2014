@@ -2,16 +2,16 @@ class Resources {
   
     // GLOBAL VARIABLES
   
-  String ResourceNames [] = {"Gold", "Essence", "Gems"};
+  String resourceNames [] = {"Gold", "Essence", "Gems"};
   
   
   // CONSTRUCTOR
    
    
-    Resources(int Gold_temp, int Essence_temp, int Gems_temp){
-  Gold = Gold_temp;
-  Essence = Essence_temp;
-  Gems = Gems_temp;
+    Resources(int gold_temp, int essence_temp, int gems_temp){
+  gold = gold_temp;
+  essence = essence_temp;
+  gems = gems_temp;
   }
    
    
@@ -22,11 +22,11 @@ class Resources {
     
     textSize(24);
     fill(250, 232, 91); // gold text color
-    text("Gold " + str(Gold), 650, 50);
+    text("Gold " + str(gold), 650, 50);
     fill(145, 222, 216); // turquoise text color
-    text("Essence " + str(Essence), 650, 75);
+    text("Essence " + str(essence), 650, 75);
     fill(237, 230, 233); // silverish text color
-    text("Gems " + str(Gems), 650, 100);
+    text("Gems " + str(gems), 650, 100);
    
 }
 

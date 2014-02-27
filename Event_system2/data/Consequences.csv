@@ -1,6 +1,6 @@
 ScenarioID,ScenarioNames,Consequence1agg,Consequence2dip,Consequence3neut,Consequence4unpred
-1,Prologue,Happiness,,,
-2,Epilogue,,,,
+1,Prologue,People are happy,People are disappointed,,
+2,Epilogue,People are sad,People are outraged,,
 3,,,,,
 4,,,,,
 5,,,,,

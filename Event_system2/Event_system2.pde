@@ -8,17 +8,19 @@ PFont fontHeader;
 PFont fontBasic;
 Day currentDay;
 
+
+
  int day = 1;
- int Gold = 1000;
- int Essence = 500;
- int Gems = 10;
+ int gold = 1000;
+ int essence = 500;
+ int gems = 10;
  String [] buttons = {"","","",""};
  int buttonX = 200;
  int buttonY = 300;
  // int options = 0;
- String ScenarioName;
- String ScenarioDescription;
- String [] ScenarioItems;
+ String scenarioName;
+ String scenarioDescription;
+ String [] scenarioItems;
 int [] scenarioIDsPerDay;
 boolean isExtendedScenario;
  
@@ -29,9 +31,9 @@ void setup () {
   
   // INITIALIZE
   
-  currentDay = new Day(day, scenarioIDsPerDay, isExtendedScenario);
-  currentScenario = new Scenario(ScenarioName, ScenarioDescription, ScenarioItems);
-  currentResources = new Resources(Gold, Essence, Gems);
+  currentDay = new Day(scenarioIDsPerDay, isExtendedScenario);
+  currentScenario = new Scenario(scenarioName, scenarioDescription, scenarioItems);
+  currentResources = new Resources(gold, essence, gems);
   cp5 = new ControlP5(this);
   fontHeader = loadFont("IowanOldStyle-Italic-64.vlw");
   fontBasic = loadFont("IowanOldStyle-Italic-32.vlw");

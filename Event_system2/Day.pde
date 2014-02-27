@@ -1,16 +1,14 @@
 class Day {
   // GLOBAL VARIABLES
-  static final int SAMEDAYEVENT = 1;
-  static final int TWODAYEVENT = 2;
+ // static final int SAMEDAYEVENT = 1;
+ // static final int TWODAYEVENT = 2;
         
-  int day;
   int [] scenarioIDsPerDay;
   boolean isExtendedScenario; // does the scenario span multiple days?
   
   // CONSTRUCTOR
   
- Day (int day, int [] scenarioIDsPerDay, boolean isExtendedScenario){
-   this.day = day;
+ Day (int [] scenarioIDsPerDay, boolean isExtendedScenario){
    this.scenarioIDsPerDay = scenarioIDsPerDay;
   this.isExtendedScenario = isExtendedScenario; 
  }
@@ -29,13 +27,13 @@ class Day {
   void advanceOneDay() {
       currentScenario.cleanupButtons();
       day = day + 1;
-      currentScenario = new Scenario(ScenarioName, ScenarioDescription, ScenarioItems);
+      currentScenario = new Scenario(scenarioName, scenarioDescription, scenarioItems);
          currentScenario.establish();
     }
     
     void resetToZero() {
       day = 1;
-      currentScenario = new Scenario(ScenarioName, ScenarioDescription, ScenarioItems);
+      currentScenario = new Scenario(scenarioName, scenarioDescription, scenarioItems);
       redraw();
     }
     

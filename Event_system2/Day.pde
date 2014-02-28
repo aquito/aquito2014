@@ -25,15 +25,14 @@ class Day {
  */
  
   void advanceOneDay() {
-      currentScenario.cleanupButtons();
+      currentScenario[day].cleanupButtons();
       day = day + 1;
-      currentScenario = new Scenario(scenarioName, scenarioDescription, scenarioItems);
-         currentScenario.establish();
+      currentScenario[day].establish();
     }
     
     void resetToZero() {
       day = 1;
-      currentScenario = new Scenario(scenarioName, scenarioDescription, scenarioItems);
+      currentScenario[day].establish();
       redraw();
     }
     

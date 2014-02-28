@@ -1,29 +1,45 @@
 class Scenario {
   // GLOBAL VARIABLES 
 
+Scenario[] currentScenario = new Scenario[10];
+
 Table scenariodata = loadTable("ScenarioData2.csv");
-  String scenarioName = scenariodata.getString(1, day);
-  String scenarioDescription = scenariodata.getString(2, day);
+  int scenarioID;
+  String scenarioName;
+  String scenarioDescription;
+  // String scenarioDescription = scenariodata.getString(2, day);
   boolean isExtendedScenario = boolean(scenariodata.getInt(3, day));  
-String [] scenarioItems = {scenariodata.getString(4, day), scenariodata.getString(5, day), scenariodata.getString(6, day), scenariodata.getString(7, day)}; // make a string of choices out of array contents
+  // String [] scenarioItems; // make a string of choices out of array contents
   int daysTotal = scenariodata.getColumnCount(); // last column 
   String [] choices; // for recording of choices
   int [] isItemChosen = {0,0,0,0};
   
     Table consequenceCsv = loadTable("Consequences.csv", "header");
   int rows = consequenceCsv.getRowCount();
-  int columns = consequenceCsv.getColumnCount();
-  // consequencedata [] [] = [rows] [columns];
+  int cols = consequenceCsv.getColumnCount();
+  // consequencedata [] [] = [rows] [cols];
   String consequenceDescription;
 
   
   // CONSTRUCTOR
-  Scenario(String scenarioName, String scenarioDescription, String [] scenarioItems) {
+  Scenario(int scenarioID, String scenarioName, String scenarioDescription) { //  ,String [] scenarioItems
+  scenarioID = this.scenarioID;
   scenarioName = this.scenarioName;
   scenarioDescription = this.scenarioDescription;
-  scenarioItems = this.scenarioItems;
+  // scenarioItems = this.scenarioItems;
   consequenceDescription = this.consequenceDescription;
   isItemChosen = this.isItemChosen;
+  
+  // scenario initialization
+  
+   for (int i=0; i < daysTotal; i++) {
+     scenarioID = scenariodata.getInt(1, i);
+     scenarioName = scenariodata.getString(2, i);
+     scenarioDescription = scenariodata.getString(3, i);
+  currentScenario[i] = new Scenario(scenarioID, scenarioName, scenarioDescription);
+  printArray(currentScenario[i]); 
+   }
+// {scenariodata.getString(55, day), scenariodata.getString(6, day), scenariodata.getString(7, day), scenariodata.getString(8, day)}
 
   // button initialization
   
@@ -37,7 +53,12 @@ String [] scenarioItems = {scenariodata.getString(4, day), scenariodata.getStrin
     }
 }
   
- 
+
+// 
+/*
+
+
+ */ 
   
  /*
  Scenario(String consequenceDescription, int [] isItemChosen) {
@@ -48,12 +69,18 @@ String [] scenarioItems = {scenariodata.getString(4, day), scenariodata.getStrin
       
 // FUNCTIONS
 
+void getItems() {
+  for (int i = 0; i < scenarioItems.length; i++) {
+     getItems[i] = scenarioItems[i];
+  }
+}
+
   void establish() {
     fill(237, 230, 233); // silverish text color
     textSize(24);
     text("Day " + str(day), 20, 50);
     textFont(fontHeader, 48);
-    text(scenarioName, 200, 200); // Name
+    text(currentScenario[day].scenarioName, 200, 200); // Name
     textSize(32);
     text(scenarioDescription, 200, 275); // Scenario described
   }
@@ -75,36 +102,40 @@ String [] scenarioItems = {scenariodata.getString(4, day), scenariodata.getStrin
            cp5.remove(buttons[itembuttons]);
     }
   }
-    
+  
+   /*  
    void controlEvent(ControlEvent theEvent) {
   
   if(theEvent.isController()) { 
    
-    print("control event from : "+theEvent.controller().name());
     
-    /* 
+    print("control event from : "+theEvent.controller().name());
+ 
     String choiceTaken = theEvent.controller().name();
     Choices = append(Choices, choiceTaken);
     printArray(Choices);
-    */
     
-    for (int items = 0; items < 4; items++) {
-    if (theEvent.controller().name() == scenarioItems[items]) {
-      isItemChosen[items] = 1;
-      consequenceDescription = consequenceCsv.getString(day, items + 2);
-      
-      currentScenario.cleanupButtons();   
-     textSize(32);
-     text(consequenceDescription, 200, 275);
+    
+    if (theEvent.controller().name() == scenarioItems[0]) {
+      //isItemChosen[items] = 1;
+      consequenceDescription = consequenceCsv.getString(day, 3);
+      print(consequenceDescription);
      
+     
+      currentScenario.cleanupButtons();   
+      textSize(32);
+      text(consequenceDescription, 200, 275);
+     
+
      // Scenario.displayConsequences(); //execute consequence function
-      printArray(isItemChosen);
+     // printArray(isItemChosen);
+     
+     
     }
-   }
- 
+  
   }
  }
- 
+ */
 
  
   // (further development:) there should also be choices available which do not instantly lead to even interim resolution, but are basically follow up questions in trying to get more information before making the choice

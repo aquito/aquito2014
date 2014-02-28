@@ -1,14 +1,12 @@
 import controlP5.*;
 
 // DECLARE
-Scenario currentScenario;
+Scenario[] currentScenario;
 Resources currentResources;
 ControlP5 cp5;
 PFont fontHeader;
 PFont fontBasic;
 Day currentDay;
-
-
 
  int day = 1;
  int gold = 1000;
@@ -18,12 +16,15 @@ Day currentDay;
  int buttonX = 200;
  int buttonY = 300;
  // int options = 0;
+  int scenarioID;
  String scenarioName;
  String scenarioDescription;
  String [] scenarioItems;
 int [] scenarioIDsPerDay;
 boolean isExtendedScenario;
- 
+String consequenceDescription;
+
+String[] getItems = new String[4];
 
 void setup () {
   size(800,600);
@@ -31,8 +32,11 @@ void setup () {
   
   // INITIALIZE
   
+  
   currentDay = new Day(scenarioIDsPerDay, isExtendedScenario);
-  currentScenario = new Scenario(scenarioName, scenarioDescription, scenarioItems);
+ 
+ // initialize all the scenarios here via a loop
+ 
   currentResources = new Resources(gold, essence, gems);
   cp5 = new ControlP5(this);
   fontHeader = loadFont("IowanOldStyle-Italic-64.vlw");
@@ -46,12 +50,13 @@ void draw() {
   background(129, 5, 63);
   // CALL FUNCTIONALITY
 
-  currentScenario.establish();
+  currentScenario[day].establish();
   currentResources.display();
+  
 
 if (keyPressed) {
     if (key == 'O' || key == 'o') {
-  currentScenario.displayButtons(); // present options
+  currentScenario[day].displayButtons(); // present options
   }
  }
 }
@@ -66,10 +71,31 @@ if (keyPressed) {
  
 }
 
+
  public void controlEvent(ControlEvent theEvent) {
   println(theEvent.getController().getName());
+    
+    /*
+    Scenario.getItems();
+    if (theEvent.controller().name() == getItems[0]) {
+      //isItemChosen[items] = 1;
+      
+      consequenceDescription = "testing!"; // = consequenceCsv.getString(day, 3);
+      print(consequenceDescription);
+      
+    }
+    */
 }
 
+/*
+
+      currentScenario.cleanupButtons();   
+      textSize(32);
+      text(consequenceDescription, 200, 275);
+     
+     // Scenario.displayConsequences(); //execute consequence function
+     // printArray(isItemChosen);
+*/
 
   
 

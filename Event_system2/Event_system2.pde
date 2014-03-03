@@ -31,8 +31,6 @@ void setup () {
   smooth();
   
   // INITIALIZE
-  
-  
   currentDay = new Day(scenarioIDsPerDay, isExtendedScenario);
  
  // initialize all the scenarios here via a loop

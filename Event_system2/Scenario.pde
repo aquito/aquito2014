@@ -69,10 +69,11 @@ Table scenariodata = loadTable("ScenarioData2.csv");
       
 // FUNCTIONS
 
-void getItems() {
+String getItems() {
   for (int i = 0; i < scenarioItems.length; i++) {
      getItems[i] = scenarioItems[i];
   }
+  return getItems[4];
 }
 
   void establish() {

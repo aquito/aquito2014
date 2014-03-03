@@ -73,8 +73,9 @@ if (keyPressed) {
  public void controlEvent(ControlEvent theEvent) {
   println(theEvent.getController().getName());
     
-    /*
-    Scenario.getItems();
+  //  /*
+    // Scenario.getItems();
+   
     if (theEvent.controller().name() == getItems[0]) {
       //isItemChosen[items] = 1;
       
@@ -82,7 +83,8 @@ if (keyPressed) {
       print(consequenceDescription);
       
     }
-    */
+    
+    // */
 }
 
 /*

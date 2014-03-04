@@ -1,7 +1,6 @@
 class Scenario {
   // GLOBAL VARIABLES 
 
-Scenario[] currentScenario = new Scenario[10];
 
 Table scenariodata = loadTable("ScenarioData2.csv");
   int scenarioID;
@@ -22,10 +21,10 @@ Table scenariodata = loadTable("ScenarioData2.csv");
 
   
   // CONSTRUCTOR
-  Scenario(int scenarioID, String scenarioName, String scenarioDescription) { //  ,String [] scenarioItems
-  scenarioID = this.scenarioID;
-  scenarioName = this.scenarioName;
-  scenarioDescription = this.scenarioDescription;
+  Scenario(int [] scenarioID, String [] scenarioName, String [] scenarioDescription) { //  ,String [] scenarioItems
+  scenarioID [] = this.scenarioID;
+  scenarioName []= this.scenarioName;
+  scenarioDescription []= this.scenarioDescription;
   // scenarioItems = this.scenarioItems;
   consequenceDescription = this.consequenceDescription;
   isItemChosen = this.isItemChosen;
@@ -33,9 +32,9 @@ Table scenariodata = loadTable("ScenarioData2.csv");
   // scenario initialization
   
    for (int i=0; i < daysTotal; i++) {
-     scenarioID = scenariodata.getInt(1, i);
-     scenarioName = scenariodata.getString(2, i);
-     scenarioDescription = scenariodata.getString(3, i);
+     scenarioID[i] = scenariodata.getInt(1, i);
+     scenarioName[i]= scenariodata.getString(2, i);
+     scenarioDescription[i] = scenariodata.getString(3, i);
   currentScenario[i] = new Scenario(scenarioID, scenarioName, scenarioDescription);
   printArray(currentScenario[i]); 
    }
@@ -76,14 +75,15 @@ String getItems() {
   return getItems[4];
 }
 
+  
   void establish() {
     fill(237, 230, 233); // silverish text color
     textSize(24);
     text("Day " + str(day), 20, 50);
     textFont(fontHeader, 48);
-    text(currentScenario[day].scenarioName, 200, 200); // Name
+    text(scenarioName[day], 200, 200); // Name
     textSize(32);
-    text(scenarioDescription, 200, 275); // Scenario described
+    text(scenarioDescription[day], 200, 275); // Scenario described
   }
   
  

@@ -1,12 +1,15 @@
 import controlP5.*;
 
 // DECLARE
-Scenario[] currentScenario;
+
+Scenario[] currentScenario = new Scenario[10];
 Resources currentResources;
 ControlP5 cp5;
 PFont fontHeader;
 PFont fontBasic;
 Day currentDay;
+int maxDays = 10;
+int daysTotal;
 
  int day = 1;
  int gold = 1000;
@@ -24,7 +27,7 @@ int [] scenarioIDsPerDay;
 boolean isExtendedScenario;
 String consequenceDescription;
 
-String[] getItems = new String[4];
+String[] getItems = new String[3];
 
 void setup () {
   size(800,600);
@@ -48,9 +51,11 @@ void draw() {
   background(129, 5, 63);
   // CALL FUNCTIONALITY
 
+while (day < maxDays) {
   currentScenario[day].establish();
   currentResources.display();
-  
+  maxDays = daysTotal;
+}
 
 if (keyPressed) {
     if (key == 'O' || key == 'o') {

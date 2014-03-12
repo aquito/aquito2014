@@ -3,7 +3,9 @@ class X {
   
   
   // CONSTRUCTOR
+  X (){
   
+ }
   
   // FUNCTIONS
   

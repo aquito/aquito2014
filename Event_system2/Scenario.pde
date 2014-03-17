@@ -1,15 +1,16 @@
 class Scenario {
   // GLOBAL VARIABLES 
-
-
-  Table scenariodata = loadTable("ScenarioData2.csv");
-  int [] scenarioID = new int [100];
-  String []scenarioName = new String [100];
-  String []scenarioDescription = new String [100];
-  // String scenarioDescription = scenariodata.getString(2, day);
+//  Table scenariodata = loadTable("ScenarioData2.csv");
+  
+  
+  int scenarioID ;
+  String scenarioName;
+  String scenarioDescription;
   // boolean isExtendedScenario = boolean(scenariodata.getInt(3, day));  
-  String [] scenarioItems = new String [100]; // make a string of choices out of array contents
+  String [] scenarioItems = new String [6]; // make a string of choices out of array contents
+  String [] temp_scenarioItems = new String[6];
   int daysTotal = scenariodata.getColumnCount(); // last column 
+  int maxScenarios = scenariodata.getColumnCount() - 1;
   String [] choices; // for recording of choices
   int [] isItemChosen = {
     0, 0, 0, 0
@@ -23,28 +24,32 @@ class Scenario {
 
 
   // CONSTRUCTOR
-  Scenario (scenarioID[], scenarioName[], scenarioDescription[], scenarioItems[], consequenceDescription[]) {
-    scenarioID[] = this.scenarioID[];
-    scenarioName[] = this.scenarioName[];
-    scenarioDescription[] = this.scenarioDescription[];
-    scenarioItems[] = this.scenarioItems[];
-    consequenceDescription[] = this.consequenceDescription[];
+  Scenario (int temp_scenarioID) {
+   
+    temp_scenarioID = scenarioID;
+ //   temp_scenarioName = scenarioName;
+ //   temp_scenarioDescription = scenarioDescription;
+ //  temp_scenarioItems[] = scenarioItems[];
+   
+    // consequenceDescription[] = this.consequenceDescription[];
    // isItemChosen[] = this.isItemChosen[];
-
+  
+  }
+  
     // scenario initialization
-
-    for (int i=0; i < daysTotal; i++) {
-      scenarioID[i] = scenariodata.getInt(1, i);
-      scenarioName[i]= scenariodata.getString(2, i);
-      scenarioDescription[i] = scenariodata.getString(3, i);
-      scenarioItems[i] = {scenariodata.getString(5, day), scenariodata.getString(6, day), scenariodata.getString(7, day), scenariodata.getString(8, day)}
+void scenarioInit() { 
+    for (int i=0; i < maxScenarios; i++) {
+    //  scenarioID = scenariodata.getInt(1, i);
+    //  scenarioName = scenariodata.getString(2, i);
+    //  scenarioDescription = scenariodata.getString(3, i);
       
-      currentScenario[i] = new Scenario(scenarioID[i], scenarioName[i], scenarioDescription[i], scenarioItems[i], consequenceDescription[i]);
-      printArray(currentScenario[i]);
+    scenarioItems[i] = scenariodata.getString(5, day); //, scenariodata.getString(6, day), scenariodata.getString(7, day), scenariodata.getString(8, day);
+      currentScenario[i] = new Scenario(scenariodata.getInt(1, i));//, scenariodata.getString(2, i), scenariodata.getString(3, i));
+      printScenario = scenariodata.getInt(1, i) + scenariodata.getString(2, i) + scenariodata.getString(3, i);
     }
-
+}
     // button initialization
-
+void buttonInit () {
     if  (day < daysTotal) {
       for (int items = 0; items < 4; items++) {
         buttons[items] = scenarioItems[items]; // choices output; update buttons text to current scenario
@@ -54,7 +59,7 @@ class Scenario {
       day = daysTotal;
       currentDay.theEnd();
     }
-  }
+}
 
 
   // 
@@ -76,7 +81,7 @@ class Scenario {
     for (int i = 0; i < scenarioItems.length; i++) {
       getItems[i] = scenarioItems[i];
     }
-    return getItems[4];
+    return getItems[6];
   }
 
 
@@ -85,9 +90,9 @@ class Scenario {
     textSize(24);
     text("Day " + str(day), 20, 50);
     textFont(fontHeader, 48);
-    text(scenarioName[day], 200, 200); // Name
+    text(scenarioName, 200, 200); // Name
     textSize(32);
-    text(scenarioDescription[day], 200, 275); // Scenario described
+    text(scenarioDescription, 200, 275); // Scenario described
   }
 
 

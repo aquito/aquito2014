@@ -1,8 +1,8 @@
 import controlP5.*;
 
 // DECLARE
-
-Scenario[] currentScenario = new Scenario[10];
+Table scenariodata;
+Scenario[] currentScenario = new Scenario[100];
 Resources currentResources;
 ControlP5 cp5;
 PFont fontHeader;
@@ -10,6 +10,7 @@ PFont fontBasic;
 Day currentDay;
 int maxDays = 10;
 int daysTotal;
+int maxScenarios;
 
 int day = 1;
 int gold = 1000;
@@ -22,21 +23,42 @@ int buttonX = 200;
 int buttonY = 300;
 // int options = 0;
 int scenarioID;
+/*
 String scenarioName;
 String scenarioDescription;
 String [] scenarioItems;
-int [] scenarioIDsPerDay;
-boolean isExtendedScenario;
+*/
 String consequenceDescription;
 
-String[] getItems = new String[3];
+
+int [] scenarioIDsPerDay = new int[3];
+boolean isExtendedScenario = false;
+
+String printScenario;
+String[] getItems = new String[6];
 
 void setup () {
   size(800, 600);
   smooth();
 
   // INITIALIZE
-  currentDay = new Day(scenarioIDsPerDay, isExtendedScenario);
+  
+  scenariodata = new Table();
+  scenariodata.addColumn("ScenarioID");
+  scenariodata.addColumn("ScenarioName");
+  scenariodata.addColumn("ScenarioDescription");
+  scenariodata.addColumn("ScenarioItem1");
+  scenariodata.addColumn("ScenarioItem2");
+  
+  TableRow newRow = scenariodata.addRow();
+  newRow.setInt("ScenarioID", scenariodata.lastRowIndex());
+  newRow.setString("ScenarioName", "Prologue");
+  newRow.setString("ScenarioDescription", "Marry partner");
+  newRow.setString("ScenarioItem1", "Yes");
+  newRow.setString("ScenarioItem2", "No");
+  saveTable(scenariodata, "data/ScenDataPDE.csv");
+  
+  currentDay = new Day(day);
 
   // initialize all the scenarios here via a loop
 
@@ -54,7 +76,11 @@ void draw() {
   // CALL FUNCTIONALITY
 
   while (day < maxDays) {
-    currentScenario[day].establish();
+    // currentScenario[day].establish();
+    print(getItems);
+    print(printScenario);
+    print(daysTotal);
+    print(maxScenarios);
     currentResources.display();
     maxDays = daysTotal;
   }

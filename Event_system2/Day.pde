@@ -4,13 +4,14 @@ class Day {
   // static final int TWODAYEVENT = 2;
 
   int [] scenarioIDsPerDay;
-  boolean isExtendedScenario; // does the scenario span multiple days?
+  boolean isExtendedScenario; // = does the scenario span multiple days?
 
   // CONSTRUCTOR
 
-  Day (int [] scenarioIDsPerDay, boolean isExtendedScenario) {
-    this.scenarioIDsPerDay = scenarioIDsPerDay;
-    this.isExtendedScenario = isExtendedScenario;
+  Day (int temp_Day) {
+  temp_Day = day;
+    // temp_scenarioIDsPerDay[] = scenarioIDsPerDay[];
+  //  temp_isExtendedScenario = isExtendedScenario;
   }
 
   // FUNCTIONS

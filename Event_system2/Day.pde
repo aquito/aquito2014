@@ -9,32 +9,28 @@ class Day {
   // CONSTRUCTOR
 
   Day (int temp_Day) {
-  temp_Day = day;
+    temp_Day = day;
     // temp_scenarioIDsPerDay[] = scenarioIDsPerDay[];
-  //  temp_isExtendedScenario = isExtendedScenario;
+    //  temp_isExtendedScenario = isExtendedScenario;
   }
 
   // FUNCTIONS
 
-  /* 
-   
-   eventType(){ 
-   
-   }
-   
-   
-   */
 
   void advanceOneDay() {
-    currentScenario[day].cleanupButtons();
+    redraw();
+    currentScenario.cleanupButtons();
     day = day + 1;
-    currentScenario[day].establish();
+    currentScenario = new Scenario(day);
+    currentScenario.establish();
   }
 
   void resetToZero() {
-    day = 1;
-    currentScenario[day].establish();
     redraw();
+    currentScenario.cleanupButtons();
+    day = 0;
+    currentScenario = new Scenario(day);
+    currentScenario.establish();
   }
 
   void theEnd() {

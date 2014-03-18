@@ -21,7 +21,6 @@ class Resources {
 
   void display() {
 
-
     textSize(24);
     fill(250, 232, 91); // gold text color
     text("Gold " + str(gold), 650, 50);
@@ -31,5 +30,4 @@ class Resources {
     text("Gems " + str(gems), 650, 100);
   }
 }
-
 

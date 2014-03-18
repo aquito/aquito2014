@@ -1,3 +1,4 @@
-ScenarioID,ScenarioName,ScenarioDescription,ScenarioItem1,ScenarioItem2
-0,Prologue,Marry partner?,Yes,No
-1,Epilogue,Bury the corpse?,Yes,No
+ScenarioID,ScenarioName,ScenarioDescription,ScenarioItem1,ScenarioItem2,ScenarioItem3,ScenarioItem4
+0,Prologue,Marry partner?,Yes,No,,
+1,Epilogue,Bury the corpse?,Yes,No,"Yes, but...","No, but..."
+2,Beginning,Continue?,Yes,No,"Yes, but...","No, but..."

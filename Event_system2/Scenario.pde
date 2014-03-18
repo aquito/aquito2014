@@ -1,93 +1,74 @@
 class Scenario {
   // GLOBAL VARIABLES 
-//  Table scenariodata = loadTable("ScenarioData2.csv");
-  
-  
-  int scenarioID ;
+
+  Table scenariodata = loadTable("ScenarioData.csv", "header");
+  int daysTotal = scenariodata.getRowCount(); // last row...ideally, eventually column for easier csv manipulation 
+  int scenarioID;
   String scenarioName;
   String scenarioDescription;
-  // boolean isExtendedScenario = boolean(scenariodata.getInt(3, day));  
-  String [] scenarioItems = new String [6]; // make a string of choices out of array contents
-  String [] temp_scenarioItems = new String[6];
-  int daysTotal = scenariodata.getColumnCount(); // last column 
-  int maxScenarios = scenariodata.getColumnCount() - 1;
-  String [] choices; // for recording of choices
-  int [] isItemChosen = {
-    0, 0, 0, 0
-  };
+  String scenarioItem1;
+  String scenarioItem2;
+  String scenarioItem3;
+  String scenarioItem4;
+   String scenarioItem1Stance;
+   String scenarioItem2Stance;
+   String scenarioItem3Stance;
+   String scenarioItem4Stance;
 
-  Table consequenceCsv = loadTable("Consequences.csv", "header");
-  int rows = consequenceCsv.getRowCount();
-  int cols = consequenceCsv.getColumnCount();
-  // consequencedata [] [] = [rows] [cols];
-  String [] consequenceDescription = new String [100];
+
+  // boolean isExtendedScenario = boolean(scenariodata.getInt(3, day));  
 
 
   // CONSTRUCTOR
-  Scenario (int temp_scenarioID) {
-   
-    temp_scenarioID = scenarioID;
- //   temp_scenarioName = scenarioName;
- //   temp_scenarioDescription = scenarioDescription;
- //  temp_scenarioItems[] = scenarioItems[];
-   
+  Scenario (int temp_day) {
+
+    day = temp_day;
+
     // consequenceDescription[] = this.consequenceDescription[];
-   // isItemChosen[] = this.isItemChosen[];
-  
-  }
-  
+    // isItemChosen[] = this.isItemChosen[];
+
     // scenario initialization
-void scenarioInit() { 
-    for (int i=0; i < maxScenarios; i++) {
-    //  scenarioID = scenariodata.getInt(1, i);
-    //  scenarioName = scenariodata.getString(2, i);
-    //  scenarioDescription = scenariodata.getString(3, i);
-      
-    scenarioItems[i] = scenariodata.getString(5, day); //, scenariodata.getString(6, day), scenariodata.getString(7, day), scenariodata.getString(8, day);
-      currentScenario[i] = new Scenario(scenariodata.getInt(1, i));//, scenariodata.getString(2, i), scenariodata.getString(3, i));
-      printScenario = scenariodata.getInt(1, i) + scenariodata.getString(2, i) + scenariodata.getString(3, i);
-    }
-}
-    // button initialization
-void buttonInit () {
-    if  (day < daysTotal) {
-      for (int items = 0; items < 4; items++) {
-        buttons[items] = scenarioItems[items]; // choices output; update buttons text to current scenario
-      }
+
+    if (day > daysTotal) {
+      currentDay.theEnd();
     } 
     else { 
-      day = daysTotal;
+      scenarioID = scenariodata.getInt(temp_day, 0);
+      scenarioName = scenariodata.getString(temp_day, 1);
+      scenarioDescription = scenariodata.getString(temp_day, 2);
+
+      scenarioItem1 = scenariodata.getString(temp_day, 5);
+      scenarioItem2 = scenariodata.getString(temp_day, 6);
+      scenarioItem3 = scenariodata.getString(temp_day, 7);
+      scenarioItem4 = scenariodata.getString(temp_day, 8);
+
+      scenarioItem1Stance = scenariodata.getString(temp_day, 9);
+      scenarioItem2Stance = scenariodata.getString(temp_day, 10);
+      scenarioItem3Stance = scenariodata.getString(temp_day, 11);
+      scenarioItem4Stance = scenariodata.getString(temp_day, 12);
+    }  
+
+    // button initialization
+
+    if  (day <= daysTotal) {
+      buttons[0] = scenarioItem1; // choices output; update buttons text to current scenario
+      buttons[1] = scenarioItem2;
+      buttons[2] = scenarioItem3;
+      buttons[3] = scenarioItem4;
+    } 
+    else { 
       currentDay.theEnd();
     }
-}
-
-
-  // 
-  /*
-
-   
-   */
-
-  /*
- Scenario(String consequenceDescription, int [] isItemChosen) {
-   consequenceDescription = this.consequenceDescription;
-   isItemChosen = this.isItemChosen;
-   }
-   */
+  }
 
   // FUNCTIONS
 
-  String getItems() {
-    for (int i = 0; i < scenarioItems.length; i++) {
-      getItems[i] = scenarioItems[i];
-    }
-    return getItems[6];
-  }
-
-
+ 
   void establish() {
+    print(scenarioID + ": " + scenarioName);
+    println("Day" + day + " out of " + daysTotal);
     fill(237, 230, 233); // silverish text color
-    textSize(24);
+    textFont(fontHeader, 24);
     text("Day " + str(day), 20, 50);
     textFont(fontHeader, 48);
     text(scenarioName, 200, 200); // Name
@@ -95,18 +76,27 @@ void buttonInit () {
     text(scenarioDescription, 200, 275); // Scenario described
   }
 
-
   void displayButtons() {
     for (int itembuttons = 0; itembuttons < 4; itembuttons++) { //add buttons for four options unless options are blank
-      buttons[itembuttons] = scenarioItems[itembuttons];
       if (buttons[itembuttons].length() == 0) {    
         cp5.remove(buttons[itembuttons]);
       } 
       else {
         cp5.addButton(buttons[itembuttons], 1, buttonX, buttonY+itembuttons*40, 300, 32);
+        arraycopy(buttons, itemButtons); 
       }
     }
-  }  
+}
+
+/*
+  String getChoices() {
+   arrayCopy(buttons, itemButtons);
+   // choiceStances[] = append(choiceStances, scenarioItem1Stance);
+  //  choiceStance1 = scenarioItem1Stance; //, String scenarioItem2Stance, String scenarioItem3Stance, String scenarioItem4Stance}; 
+    return itemButtons[];
+   // return choiceStances[];
+  }
+*/
 
   void cleanupButtons() {
     for (int itembuttons = 0; itembuttons < 4; itembuttons++) {
@@ -114,45 +104,9 @@ void buttonInit () {
     }
   }
 
-  /*  
-   void controlEvent(ControlEvent theEvent) {
-   
-   if(theEvent.isController()) { 
-   
-   
-   print("control event from : "+theEvent.controller().name());
-   
-   String choiceTaken = theEvent.controller().name();
-   Choices = append(Choices, choiceTaken);
-   printArray(Choices);
-   
-   
-   if (theEvent.controller().name() == scenarioItems[0]) {
-   //isItemChosen[items] = 1;
-   consequenceDescription = consequenceCsv.getString(day, 3);
-   print(consequenceDescription);
-   
-   
-   currentScenario.cleanupButtons();   
-   textSize(32);
-   text(consequenceDescription, 200, 275);
-   
-   
-   // Scenario.displayConsequences(); //execute consequence function
-   // printArray(isItemChosen);
-   
-   
-   }
-   
-   }
-   }
-   */
-
-
-  // (further development:) there should also be choices available which do not instantly lead to even interim resolution, but are basically follow up questions in trying to get more information before making the choice
+  int getDaysTotal() {
+    maxDays = daysTotal;
+    return maxDays;
+  }
 }
-
-
-// void choiceRecorder() - record choice, clear screen, initiate consequences, flag scenario as inactive (rewards, history, ...)
-// void scenarioTimer() - initiate timer (10 secs with a progress bar...eventually with not all scenarios? -> add ScenarioTimer boolean to data)
 

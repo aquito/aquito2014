@@ -65,8 +65,7 @@ class Scenario {
 
  
   void establish() {
-    print(scenarioID + ": " + scenarioName);
-    println("Day" + day + " out of " + daysTotal);
+    
     fill(237, 230, 233); // silverish text color
     textFont(fontHeader, 24);
     text("Day " + str(day), 20, 50);
@@ -76,31 +75,29 @@ class Scenario {
     text(scenarioDescription, 200, 275); // Scenario described
   }
 
+void printScenario() {
+  println(scenarioID + ": '" + scenarioName + "' - Day " + day + " out of " + daysTotal);
+  printArray(buttons);
+}
+
   void displayButtons() {
     for (int itembuttons = 0; itembuttons < 4; itembuttons++) { //add buttons for four options unless options are blank
       if (buttons[itembuttons].length() == 0) {    
         cp5.remove(buttons[itembuttons]);
-      } 
+        buttons[itembuttons] = "no button";
+      }
       else {
         cp5.addButton(buttons[itembuttons], 1, buttonX, buttonY+itembuttons*40, 300, 32);
-        arraycopy(buttons, itemButtons); 
       }
     }
 }
 
-/*
-  String getChoices() {
-   arrayCopy(buttons, itemButtons);
-   // choiceStances[] = append(choiceStances, scenarioItem1Stance);
-  //  choiceStance1 = scenarioItem1Stance; //, String scenarioItem2Stance, String scenarioItem3Stance, String scenarioItem4Stance}; 
-    return itemButtons[];
-   // return choiceStances[];
-  }
-*/
-
   void cleanupButtons() {
+    cp5.remove("Next day");
     for (int itembuttons = 0; itembuttons < 4; itembuttons++) {
+      if (buttons[itembuttons] != "no button") {
       cp5.remove(buttons[itembuttons]);
+      }
     }
   }
 

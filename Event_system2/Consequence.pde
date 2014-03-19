@@ -6,32 +6,33 @@ class Consequence {
 
   String [] choices = new String[100]; // for recording of choices
 
+  int buttonChosen;
   String choiceTaken;
   String [] choiceStance = new String [4];
 
 
   // CONSTRUCTOR
-  Consequence (String temp_choiceTaken) {
-    temp_choiceTaken = choiceTaken;  
+  Consequence (int tempbuttonChosen) {
+   buttonChosen = tempbuttonChosen;
     }
 
  // FUNCTIONS
 
 void displayConsequences() {
-    for (int i = 0; i < 4; i++) {
-      if (buttons[i] == choiceTaken) {
-        consequenceDescription = consequencedata.getString(day, 2 + i);
-        print(consequenceDescription);
-        append(choices, choiceTaken);
-      }
-    }
+int consequenceColumn = buttonChosen + 2;
+  consequenceDescription = consequencedata.getString(day, consequenceColumn);
+        println(buttonChosen + ": " + consequenceDescription);
+    //    append(choices, temp_buttonChosen);
+     // currentScenario.cleanupButtons();
+      
 }
 
-   
-// currentScenario.getChoices();
-
-
-
-    // Scenario.displayConsequences(); //execute consequence function
+void acceptConsequences() { // countdown until next scenario
+     
+     textSize(32);
+     text(consequenceDescription, 200, 500);
+      
+  // cp5.addButton("Next day", 1, width/2, 550, 300, 32);
+}
 
 }

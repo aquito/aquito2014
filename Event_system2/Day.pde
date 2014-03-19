@@ -18,19 +18,26 @@ class Day {
 
 
   void advanceOneDay() {
-    redraw();
+    
     currentScenario.cleanupButtons();
     day = day + 1;
+    loop();
     currentScenario = new Scenario(day);
     currentScenario.establish();
+    currentScenario.displayButtons();
+    currentScenario.printScenario();
+    
   }
 
   void resetToZero() {
-    redraw();
     currentScenario.cleanupButtons();
+    redraw();
+    loop ();
     day = 0;
     currentScenario = new Scenario(day);
     currentScenario.establish();
+    currentScenario.displayButtons();
+    currentScenario.printScenario();
   }
 
   void theEnd() {

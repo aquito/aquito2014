@@ -1,7 +1,7 @@
 import controlP5.*;
 
 // DECLARE
-// Table scenariodata = new Table();
+
 Scenario currentScenario;
 Resources currentResources;
 Consequence consequences;
@@ -16,18 +16,16 @@ int day = 0;
 int gold = 1000;
 int essence = 500;
 int gems = 10;
-String [] buttons = {
-  "", "", "", ""
-};
+
 int buttonX = 200;
 int buttonY = 300;
 
 int [] scenarioIDsPerDay = new int[3];
 boolean isExtendedScenario = false;
 
-   String [] scenarioItemStances = new String [4];
-  String [] itemButtons = new String [4];
- String [] choiceStances = new String [4];
+String [] scenarioItemStances = new String [4];
+String [] buttons = new String [4];
+String [] choiceStances = new String [4];
 
 void setup () {
   size(800, 600);
@@ -41,9 +39,14 @@ void setup () {
   currentScenario = new Scenario(day);
   currentResources = new Resources(gold, essence, gems);
   cp5 = new ControlP5(this);
+   
   fontHeader = loadFont("IowanOldStyle-Italic-64.vlw");
   fontBasic = loadFont("IowanOldStyle-Italic-32.vlw");
   cp5.setControlFont(fontBasic);
+  
+  currentScenario.displayButtons();
+  currentScenario.printScenario();
+ 
   // add checking active scenario
 }
 
@@ -56,22 +59,14 @@ void draw() {
   if (day <= maxDays) {
 
     currentScenario.establish();
-    currentScenario.displayButtons();
     currentResources.display();
+    
   } 
   else {
     println(day +" out of " + maxDays); 
     currentDay.theEnd();   // exits if maximum days reached to avoid crash
   }
 
-  /*
-
-   if (keyPressed) {
-   if (key == 'O' || key == 'o') {
-   currentScenario.displayButtons(); // require buttonpresent options
-   }
-   }
-   */
 }
 
 void keyPressed() {
@@ -84,38 +79,34 @@ void keyPressed() {
 }
 
 
-public void controlEvent(ControlEvent theEvent) {
-  // println(theEvent.getController().getName());
+void controlEvent(ControlEvent theEvent) {
 
 if (theEvent.isController()) { 
 
-  for (int i =0; i < 4; i++) {
-  if(theEvent.controller().name()== buttons[i]) {
-  consequences = new Consequence(buttons[i]);
+   println("control event from : "+theEvent.controller().name());
+
+ for (int i = 0; i < 4; i++) {
+  if(theEvent.controller().name() == buttons[i]) {
+  println("button:" + i);
+  consequences = new Consequence(i);
   consequences.displayConsequences();
-  print("control event from : "+theEvent.controller().name());
+ // consequences.acceptConsequences(); // enable advancing to next day
+  noLoop();
+ // consequences.grantRewards();
+ 
   } 
-   }
+}
+
+if (theEvent.isController()) {
+ 
+ if(theEvent.controller().name() == "Next day") {
+   currentScenario.getDaysTotal();
+   if (day < maxDays) {
+     currentDay.advanceOneDay();
+ }
  }
 }
-    
-  /*
+
  
-   if (theEvent.controller().name() == getItems[0]) {
-   //isItemChosen[items] = 1;
-   
-   consequenceDescription = "testing!"; // = consequenceCsv.getString(day, 3);
-   print(consequenceDescription);
-   }
-   
-
-/*
-
- currentScenario.cleanupButtons();   
- textSize(32);
- text(consequenceDescription, 200, 275);
- 
- // Scenario.displayConsequences(); //execute consequence function
- // printArray(isItemChosen);
- */
-
+}
+}

@@ -1,9 +1,9 @@
 ScenarioID,ScenarioNames,Consequence1agg,Consequence2dip,Consequence3neut,Consequence4unpred
-1,Prologue,You marry your partner. People are happy,You do not get married. People are disappointed.,,
-2,Epilogue,"You arrange the funeral, as is customary. People are sad but move on.",You decide not to respect the dead with a proper funeral. People are outraged.,,
-3,,,,,
-4,,,,,
-5,,,,,
+1,Prologue,You marry your partner. People are happy,You do not get married. People are disappointed.,dolorum amet,dolorum amet
+2,Epilogue,"You arrange the funeral, as is customary. People are sad but move on.",You decide not to respect the dead with a proper funeral. People are outraged.,dolorum amet,dolorum amet
+3,lorem ipsum,dolorum amet,dolorum amet,dolorum amet,dolorum amet
+4,lorem ipsum,dolorum amet,dolorum amet,dolorum amet,dolorum amet
+5,lorem ipsum,dolorum amet,dolorum amet,dolorum amet,dolorum amet
 6,,,,,
 7,,,,,
 8,,,,,

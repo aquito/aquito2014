@@ -5,6 +5,7 @@ import controlP5.*;
 Scenario currentScenario;
 Resources currentResources;
 Consequence consequences;
+Timer countdown;
 ControlP5 cp5;
 PFont fontHeader;
 PFont fontBasic;
@@ -20,6 +21,11 @@ int gems = 10;
 int buttonX = 200;
 int buttonY = 300;
 
+float duration;
+float timerX;
+float timerY;
+
+int [] choices = new int[100]; // for recording of choices
 int [] scenarioIDsPerDay = new int[3];
 boolean isExtendedScenario = false;
 
@@ -39,14 +45,15 @@ void setup () {
   currentScenario = new Scenario(day);
   currentResources = new Resources(gold, essence, gems);
   cp5 = new ControlP5(this);
-   
+  
+  countdown = new Timer(5, 400, 550); 
   fontHeader = loadFont("IowanOldStyle-Italic-64.vlw");
   fontBasic = loadFont("IowanOldStyle-Italic-32.vlw");
   cp5.setControlFont(fontBasic);
   
   currentScenario.displayButtons();
   currentScenario.printScenario();
- 
+
   // add checking active scenario
 }
 
@@ -61,12 +68,17 @@ void draw() {
     currentScenario.establish();
     currentResources.display();
     
+    
   } 
   else {
     println(day +" out of " + maxDays); 
     currentDay.theEnd();   // exits if maximum days reached to avoid crash
   }
-
+  
+  if (countdown.isTimerOn()) {
+     countdown.runTimer();
+  }
+ 
 }
 
 void keyPressed() {
@@ -88,9 +100,17 @@ if (theEvent.isController()) {
  for (int i = 0; i < 4; i++) {
   if(theEvent.controller().name() == buttons[i]) {
   println("button:" + i);
+  String buttonClicked = buttons [i];
   consequences = new Consequence(i);
-  consequences.displayConsequences();
- // consequences.acceptConsequences(); // enable advancing to next day
+  consequences.setConsequences();
+  consequences.showConsequences(); // enable advancing to next day
+ 
+ 
+  for (int itembuttons = 0; itembuttons < 4; itembuttons++) {
+      if (buttons[itembuttons] != buttonClicked) {
+      cp5.remove(buttons[itembuttons]);
+      }
+  }
   noLoop();
  // consequences.grantRewards();
  

@@ -4,13 +4,11 @@ class Consequence {
   Table consequencedata = loadTable("Consequences.csv", "header");
   String consequenceDescription;
 
-  String [] choices = new String[100]; // for recording of choices
-
   int buttonChosen;
   String choiceTaken;
   String [] choiceStance = new String [4];
-
-
+  
+ 
   // CONSTRUCTOR
   Consequence (int tempbuttonChosen) {
    buttonChosen = tempbuttonChosen;
@@ -18,21 +16,25 @@ class Consequence {
 
  // FUNCTIONS
 
-void displayConsequences() {
+void setConsequences() {
 int consequenceColumn = buttonChosen + 2;
   consequenceDescription = consequencedata.getString(day, consequenceColumn);
         println(buttonChosen + ": " + consequenceDescription);
-    //    append(choices, temp_buttonChosen);
+    choices[day] = buttonChosen + 1;
+    // printArray(choices);
      // currentScenario.cleanupButtons();
       
 }
 
-void acceptConsequences() { // countdown until next scenario
+  
+void showConsequences() { // countdown until next scenario
      
+  background(144, 13, 107);
      textSize(32);
-     text(consequenceDescription, 200, 500);
-      
-  // cp5.addButton("Next day", 1, width/2, 550, 300, 32);
+     text(consequenceDescription, 100, 400);
+
+   //   cp5.addButton("Next day", 1, width/2, 550, 300, 32);
+     
 }
 
 }

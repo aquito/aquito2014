@@ -15,7 +15,7 @@ class Resources {
     essence = essence_temp;
     gems = gems_temp;
   }
-
+   
 
   // FUNCTIONS
 
@@ -29,5 +29,12 @@ class Resources {
     fill(237, 230, 233); // silverish text color
     text("Gems " + str(gems), 650, 100);
   }
+  
+  void update() {
+    gold = gold + goldRewards;
+    essence = essence + essenceRewards;
+    gems = gems + gemsRewards;
+}
+
 }
 

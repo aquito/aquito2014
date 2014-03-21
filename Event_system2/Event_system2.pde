@@ -1,7 +1,6 @@
 import controlP5.*;
 
 // DECLARE
-
 Scenario currentScenario;
 Resources currentResources;
 Consequence consequences;
@@ -12,11 +11,17 @@ PFont fontBasic;
 Day currentDay;
 int maxDays;
 int maxScenarios;
+float startTimer;
 
 int day = 0;
 int gold = 1000;
 int essence = 500;
 int gems = 10;
+
+int goldRewards;
+int essenceRewards;
+int gemsRewards;
+
 
 int buttonX = 200;
 int buttonY = 300;
@@ -25,6 +30,7 @@ float duration;
 float timerX;
 float timerY;
 
+int choicemade = 0;
 int [] choices = new int[100]; // for recording of choices
 int [] scenarioIDsPerDay = new int[3];
 boolean isExtendedScenario = false;
@@ -32,6 +38,7 @@ boolean isExtendedScenario = false;
 String [] scenarioItemStances = new String [4];
 String [] buttons = new String [4];
 String [] choiceStances = new String [4];
+ 
 
 void setup () {
   size(800, 600);
@@ -40,17 +47,15 @@ void setup () {
   // INITIALIZE
 
   currentDay = new Day(day);
-
-  // initialize all the scenarios here via a loop
   currentScenario = new Scenario(day);
   currentResources = new Resources(gold, essence, gems);
   cp5 = new ControlP5(this);
   
-  countdown = new Timer(5, 400, 550); 
   fontHeader = loadFont("IowanOldStyle-Italic-64.vlw");
   fontBasic = loadFont("IowanOldStyle-Italic-32.vlw");
   cp5.setControlFont(fontBasic);
   
+  countdown = new Timer(5, 400, 550);
   currentScenario.displayButtons();
   currentScenario.printScenario();
 
@@ -63,22 +68,22 @@ void draw() {
 
   currentScenario.getDaysTotal();
 
-  if (day <= maxDays) {
+  if (day < maxDays) {
 
     currentScenario.establish();
     currentResources.display();
-    
-    
   } 
   else {
     println(day +" out of " + maxDays); 
     currentDay.theEnd();   // exits if maximum days reached to avoid crash
   }
   
-  if (countdown.isTimerOn()) {
-     countdown.runTimer();
+if (boolean(choicemade) == true) {
+ println("Choice made!");
+ startTimer = millis();
+ countdown.runTimer();
   }
- 
+  
 }
 
 void keyPressed() {
@@ -102,21 +107,21 @@ if (theEvent.isController()) {
   println("button:" + i);
   String buttonClicked = buttons [i];
   consequences = new Consequence(i);
+  choicemade = 1;
   consequences.setConsequences();
   consequences.showConsequences(); // enable advancing to next day
- 
+  consequences.grantRewards();
  
   for (int itembuttons = 0; itembuttons < 4; itembuttons++) {
       if (buttons[itembuttons] != buttonClicked) {
       cp5.remove(buttons[itembuttons]);
       }
   }
-  noLoop();
- // consequences.grantRewards();
+ noLoop();
  
   } 
 }
-
+/*
 if (theEvent.isController()) {
  
  if(theEvent.controller().name() == "Next day") {
@@ -126,7 +131,7 @@ if (theEvent.isController()) {
  }
  }
 }
-
+*/
  
 }
 }

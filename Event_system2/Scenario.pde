@@ -24,12 +24,9 @@ class Scenario {
 
     day = temp_day;
 
-    // consequenceDescription[] = this.consequenceDescription[];
-    // isItemChosen[] = this.isItemChosen[];
-
     // scenario initialization
 
-    if (day > daysTotal) {
+    if (temp_day > daysTotal) {
       currentDay.theEnd();
     } 
     else { 
@@ -50,7 +47,7 @@ class Scenario {
 
     // button initialization
 
-    if  (day <= daysTotal) {
+    if  (temp_day <= daysTotal) {
       buttons[0] = scenarioItem1; // choices output; update buttons text to current scenario
       buttons[1] = scenarioItem2;
       buttons[2] = scenarioItem3;

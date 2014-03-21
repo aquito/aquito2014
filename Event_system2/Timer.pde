@@ -6,8 +6,7 @@ class Timer {
   float tempTimerX;
   float tempTimerY;
   float displaysecs;
-  float start;
-  
+ 
   
   // CONSTRUCTOR
  Timer(float tempDuration, float tempTimerX, float tempTimerY) {
@@ -23,31 +22,17 @@ class Timer {
     
 void runTimer() {
 
- if (choices[day] != 0) { 
- 
- start = millis();
- 
- displaysecs = (durationinms - start)/1000;         
-   if (displaysecs > 0) {
+ displaysecs = (durationinms - startTimer)/1000;         
+  while (displaysecs > 0) {
      loop();
      textSize(32);
-     text("moving on in..." + round(displaysecs) + " seconds", 400, 550);
-     println(displaysecs);
-   }
-   
-  } else {
-   displaysecs = duration;
-  } 
-   
-   if (displaysecs == 0) {
+     text("moving on in..." + round(displaysecs) + " seconds", 300, 550);
+     println(displaysecs); 
+}
+  if (displaysecs == 0) {
      currentDay.advanceOneDay();
-     noLoop();
- } 
- 
+ }
 }
 
-boolean isTimerOn() {
-  return millis() > 0;
-}
 }
 

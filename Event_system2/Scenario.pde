@@ -14,15 +14,14 @@ class Scenario {
    String scenarioItem2Stance;
    String scenarioItem3Stance;
    String scenarioItem4Stance;
-
-
+  int buttonWidth;
   // boolean isExtendedScenario = boolean(scenariodata.getInt(3, day));  
-
 
   // CONSTRUCTOR
   Scenario (int temp_day) {
 
     day = temp_day;
+    temp_day = constrain(day, 0, daysTotal);
 
     // scenario initialization
 
@@ -33,6 +32,7 @@ class Scenario {
       scenarioID = scenariodata.getInt(temp_day, 0);
       scenarioName = scenariodata.getString(temp_day, 1);
       scenarioDescription = scenariodata.getString(temp_day, 2);
+      timerFlag = boolean(scenariodata.getInt(temp_day, 4));
 
       scenarioItem1 = scenariodata.getString(temp_day, 5);
       scenarioItem2 = scenariodata.getString(temp_day, 6);
@@ -43,6 +43,7 @@ class Scenario {
       scenarioItem2Stance = scenariodata.getString(temp_day, 10);
       scenarioItem3Stance = scenariodata.getString(temp_day, 11);
       scenarioItem4Stance = scenariodata.getString(temp_day, 12);
+      println("scenarioitems initialized");
     }  
 
     // button initialization
@@ -52,6 +53,8 @@ class Scenario {
       buttons[1] = scenarioItem2;
       buttons[2] = scenarioItem3;
       buttons[3] = scenarioItem4;
+      println("buttons initialized");
+
     } 
     else { 
       currentDay.theEnd();
@@ -60,7 +63,6 @@ class Scenario {
 
   // FUNCTIONS
 
- 
   void establish() {
     
     fill(237, 230, 233); // silverish text color
@@ -70,6 +72,13 @@ class Scenario {
     text(scenarioName, 200, 200); // Name
     textSize(32);
     text(scenarioDescription, 200, 275); // Scenario described
+    if (timerFlag) {
+       countdown = new Timer(15, 100, 550, "Make your choice in...");
+    }
+    if (choicemade == 1) {
+      float textX = width/2 - textWidth(consequenceDescription)/2;
+      text(consequenceDescription, textX, height-100);
+    }
   }
 
 void printScenario() {

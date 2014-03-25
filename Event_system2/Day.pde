@@ -16,8 +16,7 @@ class Day {
 
 
   void advanceOneDay() {
-    
-    loop();
+    endTime = startTimer + durationinms;
     currentScenario.cleanupButtons();
     currentScenario.getDaysTotal();
     if (day < maxDays) {

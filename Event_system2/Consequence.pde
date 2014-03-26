@@ -6,7 +6,7 @@ class Consequence {
 
   int buttonChosen;
   String choiceTaken;
-  String [] history = new String [100];
+  String [] history = new String [100]; // for recording consequences
   String [] choiceStance = new String [4];
   String [] rewards = new String[3];
     

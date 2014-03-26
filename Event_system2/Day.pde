@@ -43,8 +43,7 @@ class Day {
   }
 
   void theEnd() {
-    exit(); 
-    redraw();
+    exit();
   }
 }
 

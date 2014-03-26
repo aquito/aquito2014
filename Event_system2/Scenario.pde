@@ -21,41 +21,40 @@ class Scenario {
   Scenario (int temp_day) {
 
     day = temp_day;
-    temp_day = constrain(day, 0, daysTotal);
+    day = constrain(temp_day, 0, daysTotal);
     choicemade = 0;
 
     // scenario initialization
 
-    if (temp_day > daysTotal) {
+    if (day > daysTotal) {
       currentDay.theEnd();
     } 
     else { 
-      scenarioID = scenariodata.getInt(temp_day, 0);
-      scenarioName = scenariodata.getString(temp_day, 1);
-      scenarioDescription = scenariodata.getString(temp_day, 2);
-      timerFlag = boolean(scenariodata.getInt(temp_day, 4));
+      scenarioID = scenariodata.getInt(day, 0);
+      scenarioName = scenariodata.getString(day, 1);
+      scenarioDescription = scenariodata.getString(day, 2);
+      timerFlag = boolean(scenariodata.getInt(day, 4));
 
-      scenarioItem1 = scenariodata.getString(temp_day, 5);
-      scenarioItem2 = scenariodata.getString(temp_day, 6);
-      scenarioItem3 = scenariodata.getString(temp_day, 7);
-      scenarioItem4 = scenariodata.getString(temp_day, 8);
+      scenarioItem1 = scenariodata.getString(day, 5);
+      scenarioItem2 = scenariodata.getString(day, 6);
+      scenarioItem3 = scenariodata.getString(day, 7);
+      scenarioItem4 = scenariodata.getString(day, 8);
 
-      scenarioItem1Stance = scenariodata.getString(temp_day, 9);
-      scenarioItem2Stance = scenariodata.getString(temp_day, 10);
-      scenarioItem3Stance = scenariodata.getString(temp_day, 11);
-      scenarioItem4Stance = scenariodata.getString(temp_day, 12);
+      scenarioItem1Stance = scenariodata.getString(day, 9);
+      scenarioItem2Stance = scenariodata.getString(day, 10);
+      scenarioItem3Stance = scenariodata.getString(day, 11);
+      scenarioItem4Stance = scenariodata.getString(day, 12);
       println("scenarioitems initialized");
     }  
 
     // button initialization
 
-    if  (temp_day <= daysTotal) {
+    if  (day <= daysTotal) {
       buttons[0] = scenarioItem1; // choices output; update buttons text to current scenario
       buttons[1] = scenarioItem2;
       buttons[2] = scenarioItem3;
       buttons[3] = scenarioItem4;
       println("buttons initialized");
-
     } 
     else { 
       currentDay.theEnd();
@@ -75,7 +74,7 @@ class Scenario {
     text(scenarioDescription, 150, 175, 550, 150); // Scenario described
    
     if (timerFlag) {
-       countdown = new Timer(15, 100, 550, "Make your choice in...");
+       countdown = new Timer(10, 100, 550, "Make your choice in...");
     }
  if (choicemade == 1) { 
    consequences.showConsequences();

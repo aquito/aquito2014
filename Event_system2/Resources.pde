@@ -38,7 +38,7 @@ class Resources {
     gold = gold + goldRewards;
     essence = essence + essenceRewards;
     gems = gems + gemsRewards;
-    if(morale > 0) {
+    if(morale >= 0) {
       morale = morale + moraleChange;
     }
 }

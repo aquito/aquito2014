@@ -103,9 +103,11 @@ void draw() {
     currentDay.theEnd();   // exits if maximum days reached to avoid crash
   }
 
+/*
 if (choicemade == 0) {
  println("...awaiting choice to be made.");
 } 
+*/
     if (timerFlag == true) {
       countdown.runTimer();
     }
@@ -133,10 +135,10 @@ if (theEvent.isController()) {
   if(theEvent.controller().name() == buttons[i]) {
   println("button:" + i);
   String buttonClicked = buttons [i];
-  choicemade = 1;
   consequences = new Consequence(i);
   consequences.setConsequences(); 
   consequences.grantRewards();
+  choicemade = 1;
   
   for (int itembuttons = 0; itembuttons < 4; itembuttons++) {
       if (buttons[itembuttons] != buttonClicked) {

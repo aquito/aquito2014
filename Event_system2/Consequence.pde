@@ -26,16 +26,19 @@ void setConsequences() {
 }
 
   
-void showConsequences() { // countdown until next scenario
-     
-  background(144, 13, 107);
-    textSize(24);
-    loop();
-    // float textX = width/2 - textWidth(consequenceDescription)/2;
-    // text(consequenceDescription, textX, height-100);
-     choicemade = 1;
+void showConsequences() {
+
+  
+ float textX = width/2 - textWidth(consequenceDescription)/2;
+ float textY =  height-100; 
+ /*
+  textbox = new Textbox(consequenceDescription, 24, textX, textY, 400, 300);
+  textbox.displayTextbox();
+  */
+   textSize(24);
+   fill(237, 230, 233);  
+     text(consequenceDescription, textX, textY);
      timerFlag = false;
-     println("Choice made!");
     cp5.addButton("Next day", 1, width-200, height-50, 175, 32);
 
 }

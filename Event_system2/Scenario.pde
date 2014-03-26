@@ -22,6 +22,7 @@ class Scenario {
 
     day = temp_day;
     temp_day = constrain(day, 0, daysTotal);
+    choicemade = 0;
 
     // scenario initialization
 
@@ -68,7 +69,7 @@ class Scenario {
     fill(237, 230, 233); // silverish text color
     textFont(fontHeader, 24);
     text("Day " + str(day), 20, 50);
-    textFont(fontHeader, 48);
+    textFont(fontBasic, 48);
     text(scenarioName, 200, 200); // Name
     textSize(32);
     text(scenarioDescription, 200, 275); // Scenario described
@@ -93,6 +94,7 @@ void printScenario() {
         buttons[itembuttons] = "no button";
       }
       else {
+        textFont(fontBasic, 24);
         cp5.addButton(buttons[itembuttons], 1, buttonX, buttonY+itembuttons*40, 300, 32);
       }
     }

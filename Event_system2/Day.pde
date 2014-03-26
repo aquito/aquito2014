@@ -21,10 +21,11 @@ class Day {
     currentScenario.getDaysTotal();
     if (day < maxDays) {
     day = day + 1;
-    choicemade = 0;
     startTimer = 0;
+    loop();
+    choicemade = 0;
     currentScenario = new Scenario(day);
-    currentScenario.establish();
+   // currentScenario.establish();
     currentScenario.displayButtons();
     currentScenario.printScenario();
     } else {

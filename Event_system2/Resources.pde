@@ -25,13 +25,13 @@ class Resources {
 
     textSize(24);
     fill(250, 232, 91); // gold text color
-    text("Gold " + str(gold), 650, 50);
-    fill(145, 222, 216); // turquoise text color
-    text("Essence " + str(essence), 650, 75);
+    text("Gold " + str(gold), width-150, 50);
+    fill(65, 170, 160); // turquoise text color
+    text("Essence " + str(essence), width-150, 75);
     fill(237, 230, 233); // silverish text color
-    text("Gems " + str(gems), 650, 100);
-    fill(255, 0, 0); // silverish text color
-    text("Morale " + moraleStatus[morale], 650, 125);
+    text("Gems " + str(gems), width-150, 100);
+    fill(0, 0, 0); // silverish text color
+    text("Morale " + moraleStatus[morale], width-150, 125);
   }
   
   void update() {

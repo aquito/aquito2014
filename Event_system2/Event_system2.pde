@@ -5,10 +5,12 @@ Scenario currentScenario;
 Resources currentResources;
 Consequence consequences;
 Timer countdown;
+Textbox textbox;
 
 ControlP5 cp5;
 PFont fontHeader;
 PFont fontBasic;
+PFont fontButton;
 PImage texture;
 PImage antlers;
 
@@ -63,26 +65,26 @@ void setup () {
   cp5 = new ControlP5(this);
   
   fontHeader = loadFont("IowanOldStyle-Italic-64.vlw");
-  fontBasic = loadFont("IowanOldStyle-Italic-32.vlw");
-  cp5.setControlFont(fontBasic);
+  fontButton = loadFont("Appareo-Medium-24.vlw");
+  fontBasic = loadFont("Appareo-Medium-48.vlw");
+  cp5.setControlFont(fontButton);
+  cp5.setColorForeground(0xffaa0000);
+  cp5.setColorBackground(0xff660000);
+  cp5.setColorLabel(0xffdddddd);
+  cp5.setColorValue(0xffff88ff);
+  cp5.setColorActive(0xffff0000);
 
   texture = loadImage("Texture-01-byGhostlyPixels.png");
   texture.resize(800,600);
-   /*
-   
-  image(texture,0,0);
- */
-  
+
   currentScenario.displayButtons();
   currentScenario.printScenario();
-  
   
   // add checking active scenario
 }
 
 void draw() {
-  background(129, 5, 63);
-  // tint(255,127);
+  background(152, 82, 8); // idea: tie UI colors to choice stances; UI becomes darker/more 'corrupt' etc
   image(texture, 0, 0);
   
   // CALL FUNCTIONALITY
@@ -102,12 +104,16 @@ void draw() {
   }
 
 if (choicemade == 1) {
-consequences.showConsequences();
+     println("Choice made!");
+} else {
+  println("...awaiting choice to be made.");
 }
+
 
     if (timerFlag == true) {
       countdown.runTimer();
-    } 
+    }
+  
 }
 
 void keyPressed() {
@@ -130,9 +136,10 @@ if (theEvent.isController()) {
   if(theEvent.controller().name() == buttons[i]) {
   println("button:" + i);
   String buttonClicked = buttons [i];
+  choicemade = 1;
   consequences = new Consequence(i);
   consequences.setConsequences();
-   // enable advancing to next day
+  consequences.showConsequences();
   consequences.grantRewards();
  
   for (int itembuttons = 0; itembuttons < 4; itembuttons++) {
@@ -140,15 +147,16 @@ if (theEvent.isController()) {
       cp5.remove(buttons[itembuttons]);
       }
   }
-
-  } 
+ // noLoop();
+  }
 }
 
 if (theEvent.isController()) {
  
  if(theEvent.controller().name() == "Next day") {
-   currentScenario.getDaysTotal();
+   //currentScenario.getDaysTotal();
    if (day < maxDays) {
+     loop();
      currentDay.advanceOneDay();
  }
  }

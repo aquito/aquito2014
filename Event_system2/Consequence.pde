@@ -6,6 +6,7 @@ class Consequence {
 
   int buttonChosen;
   String choiceTaken;
+  String [] history = new String [100];
   String [] choiceStance = new String [4];
   String [] rewards = new String[3];
     
@@ -18,29 +19,26 @@ class Consequence {
  // FUNCTIONS
 
 void setConsequences() {
- 
+ println("Choice made");
   int consequenceColumn = buttonChosen + 2;
   consequenceDescription = consequencedata.getString(day, consequenceColumn);
         println(buttonChosen + ": " + consequenceDescription);
-    choices[day] = buttonChosen; 
+    choices[day] = buttonChosen;
+    history[day] = consequenceDescription;
 }
 
   
 void showConsequences() {
-
-  
- float textX = width/2 - textWidth(consequenceDescription)/2;
- float textY =  height-100; 
- /*
-  textbox = new Textbox(consequenceDescription, 24, textX, textY, 400, 300);
+ timerFlag = false;
+ float textX = 150; // width/2 - textWidth(consequenceDescription)/2;
+ textbox = new Textbox(consequenceDescription, 24, textX, height-250, 500, 200);
   textbox.displayTextbox();
-  */
+   
+   /*
    textSize(24);
    fill(237, 230, 233);  
-     text(consequenceDescription, textX, textY);
-     timerFlag = false;
-    cp5.addButton("Next day", 1, width-200, height-50, 175, 32);
-
+   text(consequenceDescription, 150, textY, 300, 200);
+    */
 }
 
 void grantRewards() {
@@ -49,7 +47,7 @@ void grantRewards() {
  essenceRewards = 50; // rewards[1];
  gemsRewards = 2; // rewards[2];
  // rewards should be fetched from the csv based on choice
- moraleChange = -1;
+ moraleChange = int(random(-2,2));
  currentResources.update();
 }
 

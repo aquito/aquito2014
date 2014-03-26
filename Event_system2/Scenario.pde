@@ -70,17 +70,17 @@ class Scenario {
     textFont(fontHeader, 24);
     text("Day " + str(day), 20, 50);
     textFont(fontBasic, 48);
-    text(scenarioName, 200, 200); // Name
-    textSize(32);
-    text(scenarioDescription, 200, 275); // Scenario described
+    text(scenarioName, 100, 125); // Name
+    textSize(24);
+    text(scenarioDescription, 150, 175, 550, 150); // Scenario described
+   
     if (timerFlag) {
        countdown = new Timer(15, 100, 550, "Make your choice in...");
     }
-    if (choicemade == 1) {
-      float textX = width/2 - textWidth(consequenceDescription)/2;
-      text(consequenceDescription, textX, height-100);
-    }
-  }
+ if (choicemade == 1) { 
+   consequences.showConsequences();
+ } 
+}
 
 void printScenario() {
   println(scenarioID + ": '" + scenarioName + "' - Day " + day + " out of " + daysTotal);
@@ -92,16 +92,17 @@ void printScenario() {
       if (buttons[itembuttons].length() == 0) {    
         cp5.remove(buttons[itembuttons]);
         buttons[itembuttons] = "no button";
-      }
-      else {
+      } else {
         textFont(fontBasic, 24);
         cp5.addButton(buttons[itembuttons], 1, buttonX, buttonY+itembuttons*40, 300, 32);
+      //  consequenceY = consequenceY + itembuttons*40+8;
       }
     }
 }
 
   void cleanupButtons() {
     cp5.remove("Next day");
+    redraw();
     for (int itembuttons = 0; itembuttons < 4; itembuttons++) {
       if (buttons[itembuttons] != "no button") {
       cp5.remove(buttons[itembuttons]);

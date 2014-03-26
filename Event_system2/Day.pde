@@ -9,7 +9,7 @@ class Day {
   // CONSTRUCTOR
 
   Day (int temp_Day) {
-    temp_Day = day;
+    day = temp_Day;
   }
 
   // FUNCTIONS
@@ -22,10 +22,7 @@ class Day {
     if (day < maxDays) {
     day = day + 1;
     startTimer = 0;
-    loop();
-    choicemade = 0;
     currentScenario = new Scenario(day);
-   // currentScenario.establish();
     currentScenario.displayButtons();
     currentScenario.printScenario();
     } else {
@@ -35,7 +32,6 @@ class Day {
   }
 
   void resetToZero() {
-    loop ();
     currentScenario.cleanupButtons();
     choicemade = 0;
     startTimer = 0;

@@ -32,8 +32,10 @@ int moraleChange;
 
 String consequenceDescription;
 
-int buttonX = 200;
-int buttonY = 300;
+int buttonX = 150;
+int descriptionY = 175;
+int buttonY = 250; // descriptionY + 100;
+int consequenceY = buttonY + 40;
 
 float duration;
 float timerX;
@@ -96,24 +98,17 @@ void draw() {
     currentScenario.establish();
     currentResources.display();
     
-    }
-    
-    else {
+    } else {
     println(day +" out of " + maxDays); 
     currentDay.theEnd();   // exits if maximum days reached to avoid crash
   }
 
-if (choicemade == 1) {
-     println("Choice made!");
-} else {
-  println("...awaiting choice to be made.");
-}
-
-
+if (choicemade == 0) {
+ println("...awaiting choice to be made.");
+} 
     if (timerFlag == true) {
       countdown.runTimer();
     }
-  
 }
 
 void keyPressed() {
@@ -123,8 +118,10 @@ void keyPressed() {
   else if (key == 'r' || key == 'R') {
     currentDay.resetToZero();
   }
+  else if (key == 'c' || key == 'C') {
+    currentScenario.cleanupButtons();
 }
-
+}
 
 void controlEvent(ControlEvent theEvent) {
 
@@ -138,16 +135,15 @@ if (theEvent.isController()) {
   String buttonClicked = buttons [i];
   choicemade = 1;
   consequences = new Consequence(i);
-  consequences.setConsequences();
-  consequences.showConsequences();
+  consequences.setConsequences(); 
   consequences.grantRewards();
- 
+  
   for (int itembuttons = 0; itembuttons < 4; itembuttons++) {
       if (buttons[itembuttons] != buttonClicked) {
       cp5.remove(buttons[itembuttons]);
       }
   }
- // noLoop();
+  cp5.addButton("Next day", 1, width-200, height-50, 175, 32);
   }
 }
 
@@ -156,7 +152,7 @@ if (theEvent.isController()) {
  if(theEvent.controller().name() == "Next day") {
    //currentScenario.getDaysTotal();
    if (day < maxDays) {
-     loop();
+     choicemade = 0;
      currentDay.advanceOneDay();
  }
  }

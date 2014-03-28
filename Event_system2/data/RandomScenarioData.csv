@@ -1,0 +1,6 @@
+ScenarioID,ScenarioName,ScenarioDescription,ScenarioDays,Timerflag,ScenarioItem1,ScenarioItem2,ScenarioItem3,ScenarioItem4,ScenarioItem1Stance,ScenarioItem2Stance,ScenarioItem3Stance,ScenarioItem4Stance,Champion1s,Champion2s,Champion3s,Champion4s
+0,Prologue,Marry partner?,1,0,Yes,No,,,Aggressive,Diplomatic,Neutral,Unpredictable,Ragnar,Lagertha,,
+1,Epilogue,Arrange funeral?,2,0,Yes,No,"Yes, but","No, but",Aggressive,Diplomatic,Neutral,Unpredictable,Ragnar,Widow,Deceased,
+2,The Storm,"A storm is approaching, stronger than ever seen in these parts. Your people are becoming restless. Not everyone will fit into the shelters as they are now. What do you do?",2,0,Start building another shelter with all the men you have.,Send women and children to the shelter.,"You have seen worse storms. Tell people to stay inside for now, it'll pass.",Lead everyone but the sick and the old into the shelter.,Aggressive,Diplomatic,Neutral,Unpredictable,Ragnar,Widow,Deceased,
+3,lorem ipsum,dolorum amet,2,0,Yes,No,,,Aggressive,Diplomatic,Neutral,Unpredictable,Ragnar,Widow,Deceased,
+4,lorem ipsum,dolorum amet,2,0,Yes,No,,,Aggressive,Diplomatic,Neutral,Unpredictable,Ragnar,Widow,Deceased,

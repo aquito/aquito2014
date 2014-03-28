@@ -46,6 +46,8 @@ float endTime = 1000;
 
 int choicemade = 0;
 boolean timerFlag = false;
+boolean scenarioFlag = true;
+boolean pathFlag = false;
 int [] choices = new int[100]; // for recording of choices
 int [] scenarioIDsPerDay = new int[3];
 boolean isExtendedScenario = false;
@@ -93,15 +95,19 @@ void draw() {
 
   currentScenario.getDaysTotal();
 
-  if (day < maxDays) {
-    
+if (day > maxDays) {
+    println(day +" out of " + maxDays); 
+    exit();   // exits if maximum days reached to avoid crash
+  }
+
+  if (scenarioFlag) {
     currentScenario.establish();
     currentResources.display();
+    } 
+    else if (pathFlag) {
+      // run map & path
+    }
     
-    } else {
-    println(day +" out of " + maxDays); 
-    currentDay.theEnd();   // exits if maximum days reached to avoid crash
-  }
 
 /*
 if (choicemade == 0) {

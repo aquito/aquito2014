@@ -3,14 +3,12 @@ class Consequence {
 
   Table consequencedata = loadTable("Consequences.csv", "header");
   
-
   int buttonChosen;
   String choiceTaken;
   String [] history = new String [100]; // for recording consequences
   String [] choiceStance = new String [4];
   String [] rewards = new String[3];
     
- 
   // CONSTRUCTOR
   Consequence (int tempbuttonChosen) {
    buttonChosen = tempbuttonChosen;
@@ -26,7 +24,6 @@ void setConsequences() {
     choices[day] = buttonChosen;
     history[day] = consequenceDescription;
 }
-
   
 void showConsequences() {
  timerFlag = false;

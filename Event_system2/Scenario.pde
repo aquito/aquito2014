@@ -3,6 +3,8 @@ class Scenario {
 
   Table scenariodata = loadTable("ScenarioData.csv", "header");
   int daysTotal = scenariodata.getRowCount(); // last row...ideally, eventually column for easier csv manipulation 
+  Table randomscenarios = loadTable("RandomScenarioData.csv", "header");
+  int maxRandom = randomscenarios.getRowCount();
   int scenarioID;
   String scenarioName;
   String scenarioDescription;
@@ -113,5 +115,9 @@ void printScenario() {
     maxDays = daysTotal;
     return maxDays;
   }
+  
+  void randomScenario() {
+    float event = random(maxRandom);
 }
 
+}

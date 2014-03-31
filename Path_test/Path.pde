@@ -1,7 +1,7 @@
 class Path {
   // GLOBAL VARIABLES
   
-  float [] speedupstartCost = new float[10];
+ //float [] speedupstartCost = new float[10];
   float speedupCost;
   float pixelpertimeunit;
   float pathstartX = 50;
@@ -11,7 +11,6 @@ class Path {
   float [] pathend = new float[10];
   float [] pathstart = new float[10];
  
-  
   
    // CONSTRUCTOR
    
@@ -30,31 +29,35 @@ startTimer = millis();
  for (int i=0; i < pathlength; i++) {
   fill(pathshade, pathshade, pathshade); 
   pathstarts[i] = pathstartX;
-  pathendX = pathstartX + durations[i]* 1.5;
+  pathendX = pathstartX + durations[i]* 2;
   pathends[i] = pathendX;
- strokeWeight(4);
+ strokeWeight(12);
    line (pathstartX, pathY, pathendX, pathY);
    ellipse (pathendX + 25, pathY, 50, 50);
    
    pathshade = pathshade - 50;
    pathstartX = pathendX + 50;
- 
  }
-   
- // length of path between days relative to duration
- // speed of progress relative to length & duration
- // line - ellipse - line - ellipse loop
- // visually indicate active, ongoing path & how much left
 } 
 
 
+void speedupButton() {
+  walker.getWalkerposition();
+  walker.getWalkerEndposition();
+  speedupCost = round(durations[day]/10 - (walkerXend - walkerX)/10);
+  speedupText = "Speed up" + speedupCost +" Gems";
+  if (durations[day] > 0) {    
+  textSize(24);
+  // text(speedupText, 100, 500); 
+  cp5.addbutton(speedupText, 1, 100, 500, 150, 30);
+  }
+}
 
 void speedup() {  // reduce duration to zero with gems, start new day
-
- // speedupstartCost[i] = durations[i]/10;
- // cp5.addbutton (if duration >0); // show price, speedupstartCost comes down relative to duration left 
- // duration[x] = 0;
- 
+ walker.getWalkerposition();
+ walker.getWalkerEndposition();
+ durations[day] = 0;
+ walkerX = walkerXend;
 } 
 
 void triggerEvent() { // trigger a random event

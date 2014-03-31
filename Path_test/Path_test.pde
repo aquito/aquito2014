@@ -10,6 +10,8 @@ PFont fontButton;
 PImage texture;
 PImage antlers;
 
+float frate = 30;
+
 int day = 0;
 
 int pathlength; // number of scenario days (=waypoints) on the path
@@ -19,7 +21,14 @@ float startTimer;
 float [] pathstarts = new float[10];
 float [] pathends = new float[10];
 
+String speedupText;
+
+ float walkerX;
+ float walkerY; 
+ float walkerXend;
+
 void setup () {
+  frameRate(frate);
   size(800, 600);
   smooth();
   background(152, 82, 8);
@@ -29,11 +38,12 @@ path = new Path(4, durations);
 path.drawPath();
 walker = new Walker(day);
 walker.initializeWalker();
+path.speedupButton();
   
 }
   
 void draw() {
-  
+ 
   walker.drawWalker();
   
 }
@@ -43,8 +53,8 @@ void controlEvent(ControlEvent theEvent) {
 
 if (theEvent.isController()) { 
   
-  if(theEvent.controller().name() == "Next day") {
-   
+  if(theEvent.controller().name() == speedupText) {
+   // path.speedup();
  }
  }
 }

@@ -1,12 +1,10 @@
 class Walker {
  // GLOBAL VARIABLES
   
- float pixelpertimeunit; // n pixels per second
+ float walkerSpeed; // n pixels per second
  float walkBegintime;  // displaysecs = (durationinms + endTime - startTimer)/1000; 
  int startingDay; // the day the walker will move towards
- float walkerX;
- float walkerY = height/2; // = pathY; 
- float walkerXend;
+float walkerY = height/2;
  
  // CONSTRUCTOR
 Walker (int temp_startingDay) {
@@ -14,27 +12,36 @@ startingDay = temp_startingDay;
 
 }
  
- /*
- for (int i = 0; i < pathend[i], i++) {
- fill(250, 243, 18);
- ellipse (pathStart[i], pathY, 20, 20);
- */
- 
    // FUNCTIONS
    
 void initializeWalker() {
    walkerX = pathstarts[startingDay];
    walkerXend = pathends[startingDay];
+   walkerSpeed = (walkerXend - walkerX)/(durations[day] * frate); // 30 pixels per second; 45 pixels in 30 secs
+   
+   // timerX = new Timer();
 println("walkerX: " + walkerX);
 println("walkerXend: " + walkerXend);
+println("walkerSpeed: " + walkerSpeed);
    }
+   
+float getWalkerposition() {
+  return walkerX;
+}  
+
+float getWalkerEndposition() {
+  return walkerXend;
+}
+  
    
 void  drawWalker() {
   if(walkerX < walkerXend) {
-  ellipse (walkerX, walkerY, 20, 20);
-  walkerX = walkerX + 1;
+  stroke(255, 255, 255);
+ strokeWeight(4); 
+  ellipse (walkerX, walkerY, 10, 10);
+  walkerX = walkerX + walkerSpeed;
 } else {
-  noLoop();
+  noLoop(); // trigger new Scenario
 }
 
  }

@@ -21,7 +21,7 @@ float startTimer;
 float [] pathstarts = new float[10];
 float [] pathends = new float[10];
 
-String speedupText;
+String speedupText ="test";
 
  float walkerX;
  float walkerY; 
@@ -39,13 +39,29 @@ path.drawPath();
 walker = new Walker(day);
 walker.initializeWalker();
 path.speedupButton();
+
+// cp5.addbutton(speedupText, 1, 100, 500, 150, 30);  
   
 }
   
 void draw() {
  
   walker.drawWalker();
+  path.randomEvent();
   
+  
+}
+
+void keyPressed() {
+  if (key == 'g' || key == 'G') {
+    path.speedup();
+  } else if (key == 'n' || key == 'N') {
+    path.towardsnextDay();
+  } else if (key == 'c' || key == 'C') {
+    walker.resumeWalker();
+  } else if (key == 's' || key == 'S') {
+    walker.stopWalker();
+  }
 }
 
 

@@ -5,6 +5,7 @@ class Walker {
  float walkBegintime;  // displaysecs = (durationinms + endTime - startTimer)/1000; 
  int startingDay; // the day the walker will move towards
 float walkerY = height/2;
+float storeWalkerspeed;
  
  // CONSTRUCTOR
 Walker (int temp_startingDay) {
@@ -14,10 +15,10 @@ startingDay = temp_startingDay;
  
    // FUNCTIONS
    
-void initializeWalker() {
-   walkerX = pathstarts[startingDay];
+void initializeWalker() { 
+  walkerX = pathstarts[startingDay];
    walkerXend = pathends[startingDay];
-   walkerSpeed = (walkerXend - walkerX)/(durations[day] * frate); // 30 pixels per second; 45 pixels in 30 secs
+   walkerSpeed = (pathends[day] - pathstarts[day])/(durations[day] * frate); // 30 pixels per second; 45 pixels in 30 secs
    
    // timerX = new Timer();
 println("walkerX: " + walkerX);
@@ -41,8 +42,25 @@ void  drawWalker() {
   ellipse (walkerX, walkerY, 10, 10);
   walkerX = walkerX + walkerSpeed;
 } else {
-  noLoop(); // trigger new Scenario
+  path.stopatDay();
+  noLoop(); // trigger new Scenario  
+  }
+ }
+ 
+void stopWalker() {
+ // resumeWalkerX = walkerX;
+ storeWalkerspeed = walkerSpeed;
+ walkerSpeed = 0;
+ println("Walker stopped");
+ noLoop();
+} 
+ 
+void resumeWalker() {
+  if (walkerSpeed == 0) {
+walkerSpeed = storeWalkerspeed;
+println("Walker resumes");
+loop();
+  }
 }
 
- }
 }

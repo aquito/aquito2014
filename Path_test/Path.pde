@@ -10,6 +10,7 @@ class Path {
   float pathshade = 255; 
   float [] pathend = new float[10];
   float [] pathstart = new float[10];
+  float randomEventtime = millis();
  
   
    // CONSTRUCTOR
@@ -44,12 +45,12 @@ startTimer = millis();
 void speedupButton() {
   walker.getWalkerposition();
   walker.getWalkerEndposition();
-  speedupCost = round(durations[day]/10 - (walkerXend - walkerX)/10);
-  speedupText = "Speed up" + speedupCost +" Gems";
+  speedupText = "Speed up: " + speedupCost +" Gems";
+  speedupCost = round(durations[day] - (walkerXend - walkerX)/10);
   if (durations[day] > 0) {    
   textSize(24);
+  fill(255,255,255);
   // text(speedupText, 100, 500); 
-  cp5.addbutton(speedupText, 1, 100, 500, 150, 30);
   }
 }
 
@@ -58,11 +59,47 @@ void speedup() {  // reduce duration to zero with gems, start new day
  walker.getWalkerEndposition();
  durations[day] = 0;
  walkerX = walkerXend;
+ // gems = gems - speedupCost;
+ // resources.update();
+ stopatDay();
 } 
 
+void randomEvent() {
+    if (random(100) < 0.5 && millis() > randomEventtime + durations[day]/5*1000) {
+      triggerEvent();
+      randomEventtime = millis();
+      println("Event time: " + randomEventtime);
+// should add a check that a random event cannot happen before a certain threshold time after a new path begins
+// also worth considering that first the exact number events (plus minus) that will happen is picked based on duration, and then their timing, enough apart but still random
+ } 
+}
+  
 void triggerEvent() { // trigger a random event
-  
-  
+  text("Random Event!", 100, 500);
+  fill(0,0,0);
+  line(walkerX, pathY-9, walkerX+1, pathY+9); 
+  walker.stopWalker();
 } 
-  
+
+void stopatDay() {
+  durations[day] = 0;
+stroke(255, 255, 255);
+ strokeWeight(15);
+  line (pathstarts[day], pathY, pathends[day], pathY);
+  text("Day " + day, pathends[day], pathY-50);
+  fill(250,243,18);
+  strokeWeight(5);
+  ellipse (pathends[day] + 25, pathY, 40, 40);  
+}  
+
+void towardsnextDay() {
+ if (durations[day] == 0) {
+  day = day + 1;
+ println(day);
+ walker = new Walker(day);
+ walker.initializeWalker();
+ loop();
+ } 
+}
+
 }

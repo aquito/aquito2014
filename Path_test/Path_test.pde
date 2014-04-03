@@ -2,6 +2,8 @@ import controlP5.*;
 
 Path path;
 Walker walker;
+Event event;
+
 
 ControlP5 cp5;
 PFont fontHeader;
@@ -9,6 +11,10 @@ PFont fontBasic;
 PFont fontButton;
 PImage texture;
 PImage antlers;
+
+int eventMax = 10; 
+int eventID;
+int state = 2;
 
 float frate = 30;
 
@@ -46,6 +52,20 @@ path.speedupButton();
   
 void draw() {
  
+  /* ui controller ideas
+ if (state == 0) {
+   ui.day();
+ } else if (state == 1) {
+   ui.event(); 
+ } else {
+   ui.overview(); // default, state '2'
+   walker.drawWalker();
+   path.randomEvent();
+ }
+ 
+ 
+ */ 
+  
   walker.drawWalker();
   path.randomEvent();
   

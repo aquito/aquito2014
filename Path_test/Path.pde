@@ -75,9 +75,11 @@ void randomEvent() {
 }
   
 void triggerEvent() { // trigger a random event
-  text("Random Event!", 100, 500);
-  fill(0,0,0);
-  line(walkerX, pathY-9, walkerX+1, pathY+9); 
+ eventID = int(random(eventMax));
+ println(eventID);
+ event = new Event(eventID);
+ event.display();
+  line(walkerX, pathY-9, walkerX+1, pathY+9);
   walker.stopWalker();
 } 
 

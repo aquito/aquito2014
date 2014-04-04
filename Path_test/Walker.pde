@@ -38,7 +38,8 @@ float getWalkerEndposition() {
 void  drawWalker() {
   if(walkerX < walkerXend) {
   stroke(255, 255, 255);
- strokeWeight(4); 
+ strokeWeight(4);
+ fill(255, 255, 255); 
   ellipse (walkerX, walkerY, 10, 10);
   walkerX = walkerX + walkerSpeed;
 } else {
@@ -58,6 +59,7 @@ void stopWalker() {
 void resumeWalker() {
   if (walkerSpeed == 0) {
 walkerSpeed = storeWalkerspeed;
+state = 2;
 println("Walker resumes");
 loop();
   }

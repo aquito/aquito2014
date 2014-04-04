@@ -3,7 +3,7 @@ import controlP5.*;
 Path path;
 Walker walker;
 Event event;
-
+UIcontroller ui;
 
 ControlP5 cp5;
 PFont fontHeader;
@@ -42,9 +42,10 @@ void setup () {
 cp5 = new ControlP5(this);
 path = new Path(4, durations);
 path.drawPath();
+ui = new UIcontroller(state);
 walker = new Walker(day);
 walker.initializeWalker();
-path.speedupButton();
+path.speedupButton();  
 
 // cp5.addbutton(speedupText, 1, 100, 500, 150, 30);  
   
@@ -52,24 +53,14 @@ path.speedupButton();
   
 void draw() {
  
-  /* ui controller ideas
+  // ui controller methods called according to state 
  if (state == 0) {
-   ui.day();
+   ui.dayfocus();
  } else if (state == 1) {
    ui.event(); 
  } else {
    ui.overview(); // default, state '2'
-   walker.drawWalker();
-   path.randomEvent();
- }
- 
- 
- */ 
-  
-  walker.drawWalker();
-  path.randomEvent();
-  
-  
+ }  
 }
 
 void keyPressed() {
@@ -81,6 +72,12 @@ void keyPressed() {
     walker.resumeWalker();
   } else if (key == 's' || key == 'S') {
     walker.stopWalker();
+  } else if (key == '1' ) {
+    state = 1;
+  } else if (key == '2' ) {
+    state = 2;
+  } else if (key == '0' ) {
+    state = 0;
   }
 }
 

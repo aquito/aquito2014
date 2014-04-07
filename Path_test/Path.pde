@@ -26,15 +26,18 @@ Path (int temp_pathlength, float [] temp_durations) {
  
 void drawPath() { // create path with duration (use timer class)
 startTimer = millis();
+pathDrawn = true;
 
  for (int i=0; i < pathlength; i++) {
-  fill(pathshade, pathshade, pathshade); 
+  overview.beginDraw();
+  overview.fill(pathshade, pathshade, pathshade); 
   pathstarts[i] = pathstartX;
   pathendX = pathstartX + durations[i]* 2;
   pathends[i] = pathendX;
- strokeWeight(12);
-   line (pathstartX, pathY, pathendX, pathY);
-   ellipse (pathendX + 25, pathY, 50, 50);
+ overview.strokeWeight(10);
+   overview.line (pathstartX, pathY, pathendX, pathY);
+   overview.ellipse (pathendX + 25, pathY, 50, 50);
+   overview.endDraw();
    
    pathshade = pathshade - 50;
    pathstartX = pathendX + 50;
@@ -68,7 +71,7 @@ void randomEvent() {
     if (random(100) < 0.5 && millis() > randomEventtime + durations[day]/5*1000) {
       triggerEvent();
       randomEventtime = millis();
-      println("Event time: " + randomEventtime);
+      println("Event time: " + randomEventtime/1000);
 // should add a check that a random event cannot happen before a certain threshold time after a new path begins
 // also worth considering that first the exact number events (plus minus) that will happen is picked based on duration, and then their timing, enough apart but still random
  } 

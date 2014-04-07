@@ -12,8 +12,10 @@ Event (int temp_eventID) {
   // FUNCTIONS
 
 void display() {
+  
+ // UIcontroller.eventpanel();
  fill(0,0,0);
-  text(eventdata.getString(eventID, 1), 100, 400);
+ text(eventdata.getString(eventID, 1), 100, 400);
 }  
  
   

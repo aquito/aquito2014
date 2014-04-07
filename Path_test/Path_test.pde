@@ -4,8 +4,9 @@ Path path;
 Walker walker;
 Event event;
 UIcontroller ui;
-
 ControlP5 cp5;
+PGraphics overview, eventview, dayview;
+
 PFont fontHeader;
 PFont fontBasic;
 PFont fontButton;
@@ -17,12 +18,12 @@ int eventID;
 int state = 2;
 
 float frate = 30;
-
 int day = 0;
 
 int pathlength; // number of scenario days (=waypoints) on the path
 float [] durations = {30, 60, 30, 120}; // durations of journey between waypoints (days) , max num of durations = pathlength + 1 if starts with path vs day 
 float startTimer;
+boolean pathDrawn = false;
 
 float [] pathstarts = new float[10];
 float [] pathends = new float[10];
@@ -35,9 +36,13 @@ String speedupText ="test";
 
 void setup () {
   frameRate(frate);
-  size(800, 600);
+  size(800, 600, P2D);
   smooth();
   background(152, 82, 8);
+
+overview = createGraphics(width, height);
+eventview = createGraphics(width, height);
+dayview = createGraphics(width, height);
 
 cp5 = new ControlP5(this);
 path = new Path(4, durations);
@@ -57,7 +62,7 @@ void draw() {
  if (state == 0) {
    ui.dayfocus();
  } else if (state == 1) {
-   ui.event(); 
+   ui.eventpanel(); 
  } else {
    ui.overview(); // default, state '2'
  }  

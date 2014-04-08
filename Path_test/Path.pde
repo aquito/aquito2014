@@ -11,8 +11,8 @@ class Path {
   float [] pathend = new float[10];
   float [] pathstart = new float[10];
   float randomEventtime = millis();
- 
   
+   
    // CONSTRUCTOR
    
 Path (int temp_pathlength, float [] temp_durations) {
@@ -78,23 +78,29 @@ void randomEvent() {
 }
   
 void triggerEvent() { // trigger a random event
- eventID = int(random(eventMax));
+ eventID = int(random(eventMax)); // this should eventually be a random pick which takes the pick out of the pool so that it does not get repeated; a dynamic array
  println(eventID);
- event = new Event(eventID);
+ event = new Event(eventID, walkerX, randomeventY);
  event.display();
-  line(walkerX, pathY-9, walkerX+1, pathY+9);
+ fill(0,0,0);
+ strokeWeight(2);
+  line(walkerX, pathY-9, walkerX, randomeventY); 
   walker.stopWalker();
+  randomeventY = randomeventY + 10;
 } 
 
 void stopatDay() {
   durations[day] = 0;
-stroke(255, 255, 255);
- strokeWeight(15);
-  line (pathstarts[day], pathY, pathends[day], pathY);
+  fullday.beginDraw();
+fullday.stroke(255, 255, 255);
+ fullday.strokeWeight(15);
+  fullday.line (pathstarts[day], pathY, pathends[day], pathY);
   text("Day " + day, pathends[day], pathY-50);
-  fill(250,243,18);
-  strokeWeight(5);
-  ellipse (pathends[day] + 25, pathY, 40, 40);  
+  fullday.fill(250,243,18);
+  fullday.strokeWeight(5);
+  fullday.ellipse (pathends[day] + 25, pathY, 40, 40);
+ fullday.endDraw();
+ image(fullday, 0, 0); 
 }  
 
 void towardsnextDay() {
@@ -102,7 +108,7 @@ void towardsnextDay() {
   day = day + 1;
  println(day);
  walker = new Walker(day);
- walker.initializeWalker();
+ walker.initializeWalker(); 
  loop();
  } 
 }

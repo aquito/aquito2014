@@ -5,7 +5,7 @@ Walker walker;
 Event event;
 UIcontroller ui;
 ControlP5 cp5;
-PGraphics overview, eventview, dayview;
+PGraphics overview, eventview, dayview, walkeronpath, fullday, completepath;
 
 PFont fontHeader;
 PFont fontBasic;
@@ -33,16 +33,21 @@ String speedupText ="test";
  float walkerX;
  float walkerY; 
  float walkerXend;
+ float randomeventY = 400;
 
 void setup () {
   frameRate(frate);
   size(800, 600, P2D);
   smooth();
   background(152, 82, 8);
-
-overview = createGraphics(width, height);
+  
 eventview = createGraphics(width, height);
+overview = createGraphics(width, height);
 dayview = createGraphics(width, height);
+walkeronpath = createGraphics(width, height);
+fullday = createGraphics(width, height);
+completepath = createGraphics(width, height);
+
 
 cp5 = new ControlP5(this);
 path = new Path(4, durations);

@@ -37,10 +37,12 @@ float getWalkerEndposition() {
    
 void  drawWalker() {
   if(walkerX < walkerXend) {
-  stroke(255, 255, 255);
- strokeWeight(4);
- fill(255, 255, 255); 
-  ellipse (walkerX, walkerY, 10, 10);
+  walkeronpath.beginDraw();
+    walkeronpath.stroke(255, 255, 255);
+ walkeronpath.strokeWeight(4);
+ walkeronpath.fill(255, 255, 255); 
+  walkeronpath.ellipse (walkerX, walkerY, 10, 10);
+   walkeronpath.endDraw();
   walkerX = walkerX + walkerSpeed;
 } else {
   path.stopatDay();

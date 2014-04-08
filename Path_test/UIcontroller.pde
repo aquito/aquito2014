@@ -28,13 +28,16 @@ void transition() {
 }
 
 void overview() { // called upon default state (=2)
+  
   if (transitionflag == true) {
   walker.resumeWalker();
   transitionflag = false;
   }
+  image(overview, 0, 0);
+  image(walkeronpath, 0, 0);
   walker.drawWalker();
   path.randomEvent();
-  image(overview, 0, 0);
+  
 }
 
 void dayfocus() { // called upon day state (=1)

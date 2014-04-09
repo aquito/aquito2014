@@ -11,6 +11,7 @@ class Path {
   float [] pathend = new float[10];
   float [] pathstart = new float[10];
   float randomEventtime = millis();
+  int eventPick;
   
    
    // CONSTRUCTOR
@@ -48,12 +49,11 @@ pathDrawn = true;
 void speedupButton() {
   walker.getWalkerposition();
   walker.getWalkerEndposition();
-  speedupText = "Speed up: " + speedupCost +" Gems";
   speedupCost = round(durations[day] - (walkerXend - walkerX)/10);
   if (durations[day] > 0) {    
   textSize(24);
   fill(255,255,255);
-  // text(speedupText, 100, 500); 
+  speedupText = "Speed up: " + speedupCost +" Gems"; 
   }
 }
 
@@ -78,7 +78,15 @@ void randomEvent() {
 }
   
 void triggerEvent() { // trigger a random event
- eventID = int(random(eventMax)); // this should eventually be a random pick which takes the pick out of the pool so that it does not get repeated; a dynamic array
+ eventPick = int(random(eventMax)); 
+ eventID = eventPool.get(eventPick);
+ eventPool.remove(eventPick);
+ if (eventMax > 1) {
+   eventMax = eventMax - 1;
+ } else {
+   exit();
+   println("Exiting, ran out of random events."); // should eventually just keep going without events; on the other hand there should be a range of events per path (between days) 
+ }
  println(eventID);
  event = new Event(eventID, walkerX, randomeventY);
  event.display();
@@ -95,6 +103,7 @@ void stopatDay() {
 fullday.stroke(255, 255, 255);
  fullday.strokeWeight(15);
   fullday.line (pathstarts[day], pathY, pathends[day], pathY);
+  textSize(16);
   text("Day " + day, pathends[day], pathY-50);
   fullday.fill(250,243,18);
   fullday.strokeWeight(5);

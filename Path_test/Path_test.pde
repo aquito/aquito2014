@@ -1,3 +1,4 @@
+import processing.data.IntList;
 import controlP5.*;
 
 Path path;
@@ -5,7 +6,9 @@ Walker walker;
 Event event;
 UIcontroller ui;
 ControlP5 cp5;
-PGraphics overview, eventview, dayview, walkeronpath, fullday, completepath;
+PImage panelbg, button;
+PGraphics overview, eventview, dayview, walkeronpath, fullday, completepath, transitionsweep;
+IntList eventPool; 
 
 PFont fontHeader;
 PFont fontBasic;
@@ -47,18 +50,23 @@ dayview = createGraphics(width, height);
 walkeronpath = createGraphics(width, height);
 fullday = createGraphics(width, height);
 completepath = createGraphics(width, height);
+transitionsweep = createGraphics(width, height);
 
+panelbg = loadImage("dialog_background.png");
+button = loadImage("button_normal.png");
 
 cp5 = new ControlP5(this);
 path = new Path(4, durations);
 path.drawPath();
+eventPool = new IntList();
+for (int i = 0; i < eventMax; i++) {
+  eventPool.append(i);
+}
 ui = new UIcontroller(state);
 walker = new Walker(day);
 walker.initializeWalker();
-path.speedupButton();  
-
-// cp5.addbutton(speedupText, 1, 100, 500, 150, 30);  
-  
+path.speedupButton();   
+cp5.addButton(speedupText, 1, 100, 500, 150, 30); 
 }
   
 void draw() {
@@ -97,7 +105,14 @@ void controlEvent(ControlEvent theEvent) {
 if (theEvent.isController()) { 
   
   if(theEvent.controller().name() == speedupText) {
-   // path.speedup();
- }
+    path.speedup();
+ } else if (theEvent.controller().name() == "Done") {
+   ui.transition();
+   state = 2;
+ } else if (theEvent.controller().name() == "Close") {
+   ui.transition();
+   state = 2;
+ } 
+ 
  }
 }

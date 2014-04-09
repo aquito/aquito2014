@@ -51,7 +51,6 @@ void  drawWalker() {
  }
  
 void stopWalker() {
- // resumeWalkerX = walkerX;
  storeWalkerspeed = walkerSpeed;
  walkerSpeed = 0;
  println("Walker stopped");

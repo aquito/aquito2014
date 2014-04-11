@@ -14,11 +14,12 @@ Event (int temp_eventID, float temp_walkerX, float temp_randomeventY) {
   // FUNCTIONS
 
 void display() {
-  
  // UIcontroller.eventpanel();
  fill(0,0,0);
  textSize(10);
- text(eventdata.getString(eventID, 1), walkerX + 3, randomeventY);
+ text(eventdata.getString(eventID, 1), walkerX - 45, randomeventY);
+ textSize(16);
+  text(eventdata.getString(eventID, 2), width/2-150, 450);
 }  
  
   

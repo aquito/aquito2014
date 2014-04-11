@@ -6,6 +6,7 @@ Walker walker;
 Event event;
 UIcontroller ui;
 ControlP5 cp5;
+State fsmstate;
 PImage panelbg, button;
 PGraphics overview, eventview, dayview, walkeronpath, fullday, completepath, transitionsweep;
 IntList eventPool; 
@@ -36,7 +37,7 @@ String speedupText ="test";
  float walkerX;
  float walkerY; 
  float walkerXend;
- float randomeventY = 400;
+ float randomeventY = 200;
 
 void setup () {
   frameRate(frate);
@@ -90,12 +91,12 @@ void keyPressed() {
     walker.resumeWalker();
   } else if (key == 's' || key == 'S') {
     walker.stopWalker();
-  } else if (key == '1' ) {
-    state = 1;
+  } else if (key == '1' ) { 
+    state = 1; // random event
   } else if (key == '2' ) {
-    state = 2;
+    state = 2; // path
   } else if (key == '0' ) {
-    state = 0;
+    state = 0; // day
   }
 }
 

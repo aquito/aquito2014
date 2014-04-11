@@ -94,7 +94,8 @@ void triggerEvent() { // trigger a random event
  strokeWeight(2);
   line(walkerX, pathY-9, walkerX, randomeventY); 
   walker.stopWalker();
-  randomeventY = randomeventY + 10;
+  randomeventY = randomeventY - 10;
+  state = 1;
 } 
 
 void stopatDay() {
@@ -109,7 +110,8 @@ fullday.stroke(255, 255, 255);
   fullday.strokeWeight(5);
   fullday.ellipse (pathends[day] + 25, pathY, 40, 40);
  fullday.endDraw();
- image(fullday, 0, 0); 
+ image(fullday, 0, 0);
+ state = 1; 
 }  
 
 void towardsnextDay() {
@@ -117,7 +119,8 @@ void towardsnextDay() {
   day = day + 1;
  println(day);
  walker = new Walker(day);
- walker.initializeWalker(); 
+ walker.initializeWalker();
+ state = 2; 
  loop();
  } 
 }

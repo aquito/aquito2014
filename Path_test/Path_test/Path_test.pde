@@ -68,11 +68,11 @@ ui = new UIcontroller(state);
 walker = new Walker(day);
 walker.initializeWalker();
 path.speedupButton();   
-cp5.addButton(speedupText, 1, 100, 500, 150, 30); 
+cp5.addButton(speedupText, 1, 10, 500, 150, 30); 
 
-gamestate = new State(2, true, true);
+gamestate = new State(2, true);
 
-}
+}  
 
 
   
@@ -80,17 +80,7 @@ void draw() {
  
   // ui controller methods called according to state 
   
-  /*
- if (state == 0) {
-   ui.dayfocus();
- } else if (state == 1) {
-   ui.eventpanel(); 
- } else {
-   ui.overview(); // default, state '2'
- }  
-*/
-
-
+ gamestate.update();
 
 }
 
@@ -123,10 +113,10 @@ if (theEvent.isController()) {
   if(theEvent.controller().name() == speedupText) {
     path.speedup();
  } else if (theEvent.controller().name() == "Done") {
-   ui.transition();
+   gamestate = new State(2, true);
    state = 2;
  } else if (theEvent.controller().name() == "Close") {
-   ui.transition();
+   gamestate = new State(2, true);
    state = 2;
  } 
  

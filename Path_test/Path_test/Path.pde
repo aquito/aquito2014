@@ -39,7 +39,6 @@ pathDrawn = true;
    overview.line (pathstartX, pathY, pathendX, pathY);
    overview.ellipse (pathendX + 25, pathY, 50, 50);
    overview.endDraw();
-   
    pathshade = pathshade - 50;
    pathstartX = pathendX + 50;
  }
@@ -88,13 +87,12 @@ void triggerEvent() { // trigger a random event
    exit();
    println("Exiting, ran out of random events."); // should eventually just keep going without events; on the other hand there should be a range of events per path (between days) 
  }
- println(eventID);
+ println("eventID: " + eventID);
  event = new Event(eventID, walkerX, randomeventY);
  event.display();
  fill(0,0,0);
  strokeWeight(2);
   line(walkerX, pathY-9, walkerX, randomeventY); 
-  walker.stopWalker();
   randomeventY = randomeventY - 10;
  state = 1;
  ui.transition();
@@ -108,7 +106,7 @@ fullday.stroke(255, 255, 255);
   fullday.line (pathstarts[day], pathY, pathends[day], pathY);
   textSize(16);
   text("Day " + day, pathends[day], pathY-50);
-  fullday.fill(250,243,18);
+  fullday.fill(250, 243, 18);
   fullday.strokeWeight(5);
   fullday.ellipse (pathends[day] + 25, pathY, 40, 40);
  fullday.endDraw();

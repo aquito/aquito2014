@@ -60,8 +60,10 @@ void stopWalker() {
 void resumeWalker() {
   if (walkerSpeed == 0) {
 walkerSpeed = storeWalkerspeed;
+randomEvent = false;
 state = 2;
 println("Walker resumes");
+println(walkerSpeed);
 loop();
   }
 }

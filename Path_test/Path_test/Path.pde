@@ -94,7 +94,6 @@ void triggerEvent() { // trigger a random event
  strokeWeight(2);
   line(walkerX, pathY-9, walkerX, randomeventY); 
   randomeventY = randomeventY - 10;
- state = 1;
  ui.transition();
 } 
 
@@ -111,11 +110,11 @@ fullday.stroke(255, 255, 255);
   fullday.ellipse (pathends[day] + 25, pathY, 40, 40);
  fullday.endDraw();
  image(fullday, 0, 0);
- state = 0;
+ ui.transition();
 }  
 
 void towardsnextDay() {
- if (durations[day] == 0) {
+ if (durations[day] == 0 && day < totaldays) {
   day = day + 1;
  println(day);
  walker = new Walker(day);

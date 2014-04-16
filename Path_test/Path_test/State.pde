@@ -3,7 +3,7 @@ class State {
  // GLOBAL VARIABLES 
 int uiState; // which image from buffer is shown; 0 = day, 1 = event, 2 = path
 
-boolean walkerState; // true = walker is shown & moving, false = walker not shown & stopped
+// boolean walkerState; // true = walker is shown & moving, false = walker not shown & stopped
 boolean pathState; // true = path is drawn, false = not
 
 /*

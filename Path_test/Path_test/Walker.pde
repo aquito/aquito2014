@@ -1,7 +1,7 @@
 class Walker {
  // GLOBAL VARIABLES
   
- float walkerSpeed; // n pixels per second
+
  float walkBegintime;  // displaysecs = (durationinms + endTime - startTimer)/1000; 
  int startingDay; // the day the walker will move towards
 float walkerY = height/2;
@@ -46,7 +46,7 @@ void  drawWalker() {
   walkerX = walkerX + walkerSpeed;
 } else {
   path.stopatDay();
-  noLoop(); // trigger new Scenario  
+  // noLoop(); // trigger new Scenario  
   }
  }
  

@@ -35,7 +35,7 @@ float walkerSpeed; // n pixels per second
 float [] pathstarts = new float[10];
 float [] pathends = new float[10];
 
-String speedupText ="test";
+String speedupText;
 
  float walkerX;
  float walkerY; 
@@ -68,9 +68,9 @@ for (int i = 0; i < eventMax; i++) {
 }
 ui = new UIcontroller(state);
 walker = new Walker(day);
+path.speedupButton();  
 walker.initializeWalker();
-path.speedupButton();   
-cp5.addButton(speedupText, 1, 10, 500, 150, 30); 
+  
 
 gamestate = new State(2, true);
 

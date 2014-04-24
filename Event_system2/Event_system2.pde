@@ -114,7 +114,7 @@ if (choicemade == 0) {
  println("...awaiting choice to be made.");
 } 
 */
-    if (timerFlag == true) {
+    if (timerFlag) {
       countdown.runTimer();
     }
 }
